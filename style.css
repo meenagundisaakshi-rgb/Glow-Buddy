@@ -744,6 +744,41 @@ audio::-webkit-media-controls-panel {
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 6px 20px rgba(176, 137, 104, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+#levels-grid .lexly-lang-card {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgba(176, 137, 104, 0.1);
+}
+
+#levels-grid .lexly-lang-card:hover {
+  border-color: var(--primary);
+  background: white;
+}
+
+#levels-grid .lexly-lang-card::after {
+  content: 'START';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 4px;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+#levels-grid .lexly-lang-card:hover::after {
+  transform: translateY(0);
 }
 .lexly-lang-card:hover {
   transform: translateY(-6px) scale(1.03);
