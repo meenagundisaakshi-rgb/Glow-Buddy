@@ -337,7 +337,27 @@
           <div style="font-size: 5rem; margin-bottom: 15px;">🎉</div>
           <h3 style="font-size: 2rem;">Deck Completed!</h3>
           <p>You are one step closer to fluency. Great job!</p>
-          <button class="btn primary-btn" onclick="app.exitLexly()">Choose Another Deck</button>
+          <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button class="btn success-btn" onclick="app.startLexlyTest()">Take a Quiz 📝</button>
+            <button class="btn primary-btn" onclick="app.exitLexly()">Choose Another Deck</button>
+          </div>
+        </div>
+
+        <div id="lexly-test" class="hidden fade-in">
+          <div class="card flex-center-card" style="min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px;">
+            <div class="quiz-badge" id="lexly-test-badge">📝 Language Test</div>
+            <h3 id="lexly-test-question" style="font-size: 1.8rem; margin: 30px 0; text-align: center;">Question goes here?</h3>
+            
+            <div id="lexly-test-options" style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px;">
+              <!-- Options will be injected here -->
+            </div>
+
+            <div id="lexly-test-feedback" class="hidden" style="margin-top: 25px; font-weight: 600; padding: 10px 20px; border-radius: 12px;">
+              Correct! ✅
+            </div>
+
+            <button class="btn secondary-btn" onclick="app.exitLexly()" style="margin-top: 40px; font-size: 0.85rem;">Quit Test</button>
+          </div>
         </div>
       </section>
 
