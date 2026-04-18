@@ -234,50 +234,60 @@
         <p class="subtitle">Expand your world. Learn a new language bite by bite.</p>
         
         <div id="lexly-categories" class="lexly-lang-grid fade-in">
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('spanish')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('spanish')">
             <div class="lexly-lang-flag">🇪🇸</div>
             <h4>Spanish</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('french')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('french')">
             <div class="lexly-lang-flag">🇫🇷</div>
             <h4>French</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('japanese')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('japanese')">
             <div class="lexly-lang-flag">🇯🇵</div>
             <h4>Japanese</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('chinese')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('chinese')">
             <div class="lexly-lang-flag">🇨🇳</div>
             <h4>Chinese</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('hindi')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('hindi')">
             <div class="lexly-lang-flag">🇮🇳</div>
             <h4>Hindi</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('korean')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('korean')">
             <div class="lexly-lang-flag">🇰🇷</div>
             <h4>Korean</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('kannada')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('kannada')">
             <div class="lexly-lang-flag">🏴</div>
             <h4>Kannada</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('sanskrit')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('sanskrit')">
             <div class="lexly-lang-flag">🕉️</div>
             <h4>Sanskrit</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
           </div>
-          <div class="lexly-lang-card" onclick="app.loadLexlyDeck('italian')">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('italian')">
             <div class="lexly-lang-flag">🇮🇹</div>
             <h4>Italian</h4>
-            <p>8 Cards</p>
+            <p>3 Levels</p>
+          </div>
+        </div>
+
+        <div id="lexly-levels" class="hidden fade-in" style="margin-top: 20px;">
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+             <button class="btn secondary-btn" onclick="app.exitLexly()" style="margin-top:0; padding: 10px 15px;">← Back to Decks</button>
+             <h3 id="lexly-level-title" style="margin: 0; color: var(--primary);">Levels</h3>
+          </div>
+          <div id="levels-grid" class="lexly-lang-grid">
+            <!-- Dynamic levels go here -->
           </div>
         </div>
 
