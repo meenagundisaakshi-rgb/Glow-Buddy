@@ -565,18 +565,22 @@ const app = {
         { front: 'Yes', back: 'Oui', pronunciation: '(wee)' },
         { front: 'No', back: 'Non', pronunciation: '(noh)' },
         { front: 'Boy', back: 'Garçon', pronunciation: '(gar-sohn)' },
-        { front: 'Girl', back: 'Fille', pronunciation: '(fee)' }
+        { front: 'Girl', back: 'Fille', pronunciation: '(fee)' },
+        { front: 'Red', back: 'Rouge', pronunciation: '(roozh)' },
+        { front: 'Blue', back: 'Bleu', pronunciation: '(bluh)' }
       ]},
       { level: 2, name: 'Greetings', cards: [
         { front: 'Nice to meet you', back: 'Enchanté', pronunciation: '(ahn-shahn-tay)' },
         { front: 'How is it going?', back: 'Comment ça va?', pronunciation: '(koh-mahn sah vah)' },
         { front: 'Good night', back: 'Bonne nuit', pronunciation: '(bon nwee)' },
-        { front: 'See you later', back: 'À plus tard', pronunciation: '(ah ploo tar)' }
+        { front: 'See you later', back: 'À plus tard', pronunciation: '(ah ploo tar)' },
+        { front: 'Very well', back: 'Très bien', pronunciation: '(treh byahn)' }
       ]},
       { level: 3, name: 'Sentences', cards: [
         { front: 'I would like a coffee', back: 'Je voudrais un café', pronunciation: '(zhuh voo-dreh uhn kah-fay)' },
         { front: 'What time is it?', back: 'Quelle heure est-il?', pronunciation: '(kel er eh-teel)' },
-        { front: 'The weather is nice', back: 'Il fait beau', pronunciation: '(eel feh boh)' }
+        { front: 'The weather is nice', back: 'Il fait beau', pronunciation: '(eel feh boh)' },
+        { front: 'I like France', back: 'J’aime la France', pronunciation: '(zhem lah frahns)' }
       ]}
     ],
     japanese: [
@@ -584,17 +588,24 @@ const app = {
         { front: 'Hello', back: 'こんにちは', pronunciation: '(kon-ni-chi-wa)' },
         { front: 'School', back: '学校', pronunciation: '(gak-koh)' },
         { front: 'Sensei (Teacher)', back: '先生', pronunciation: '(sen-say)' },
-        { front: 'Friend', back: '友達', pronunciation: '(to-mo-da-chi)' }
+        { front: 'Friend', back: '友達', pronunciation: '(to-mo-da-chi)' },
+        { front: 'Water', back: '水', pronunciation: '(mi-zu)' },
+        { front: 'Tree', back: '木', pronunciation: '(ki)' },
+        { front: 'Mountain', back: '山', pronunciation: '(ya-ma)' },
+        { front: 'River', back: '川', pronunciation: '(ka-wa)' }
       ]},
       { level: 2, name: 'Phrases', cards: [
         { front: 'Thank you very much', back: 'どうもありがとうございます', pronunciation: '(doh-mo a-ri-ga-toh go-zai-mas)' },
         { front: 'Tasty / Delicious', back: '美味しい', pronunciation: '(o-i-shee)' },
-        { front: 'Do your best!', back: '頑張って', pronunciation: '(gam-bat-te)' }
+        { front: 'Do your best!', back: '頑張って', pronunciation: '(gam-bat-te)' },
+        { front: 'I see', back: 'なるほど', pronunciation: '(na-ru-ho-do)' },
+        { front: 'Help me', back: '助けて', pronunciation: '(ta-su-ke-te)' }
       ]},
       { level: 3, name: 'Conversations', cards: [
         { front: 'What is your name?', back: 'お名前は何ですか？', pronunciation: '(o-na-ma-e wa nan-des-ka?)' },
         { front: 'I like sushi', back: '寿司が好きです', pronunciation: '(su-shi ga su-ki desu)' },
-        { front: 'Where is the station?', back: '駅はどこですか？', pronunciation: '(e-ki wa do-ko des-ka?)' }
+        { front: 'Where is the station?', back: '駅はどこですか？', pronunciation: '(e-ki wa do-ko des-ka?)' },
+        { front: 'Please speak slowly', back: 'ゆっくり話してください', pronunciation: '(yuk-ku-ri ha-na-shi-te ku-da-sai)' }
       ]}
     ],
     hindi: [
@@ -602,93 +613,127 @@ const app = {
         { front: 'Hello', back: 'नमस्ते', pronunciation: '(na-mas-tay)' },
         { front: 'Mother', back: 'माँ', pronunciation: '(maa)' },
         { front: 'Father', back: 'पिता', pronunciation: '(pi-ta)' },
-        { front: 'Student', back: 'छात्र', pronunciation: '(cha-tra)' }
+        { front: 'Student', back: 'छात्र', pronunciation: '(cha-tra)' },
+        { front: 'Book', back: 'किताब', pronunciation: '(ki-taab)' },
+        { front: 'Pen', back: 'कलम', pronunciation: '(ka-lam)' },
+        { front: 'Country', back: 'देश', pronunciation: '(desh)' },
+        { front: 'Sky', back: 'आकाश', pronunciation: '(aa-kaash)' }
       ]},
       { level: 2, name: 'Phrases', cards: [
         { front: 'What are you doing?', back: 'आप क्या कर रहे हैं?', pronunciation: '(aap kya kar rahe hain?)' },
         { front: 'How are you?', back: 'आप कैसे हैं?', pronunciation: '(aap kay-say hain?)' },
-        { front: 'I am hungry', back: 'मुझे भूख लगी है', pronunciation: '(mu-jhay bhook la-gi hai)' }
+        { front: 'I am hungry', back: 'मुझे भूख लगी है', pronunciation: '(mu-jhay bhook la-gi hai)' },
+        { front: 'What is the time?', back: 'समय क्या हुआ है?', pronunciation: '(sa-may kya hua hai)' },
+        { front: 'I am sorry', back: 'मुझे खेद है', pronunciation: '(mu-jhay khed hai)' }
       ]},
       { level: 3, name: 'Sentences', cards: [
         { front: 'I live in India', back: 'मैं भारत में रहता हूँ', pronunciation: '(main bha-rat mein reh-ta hoon)' },
         { front: 'This is my home', back: 'यह मेरा घर है', pronunciation: '(yeh me-ra ghar hai)' },
-        { front: 'Sanskrit is the mother of languages', back: 'संस्कृत भाषाओं की जननी है', pronunciation: '(san-skrit bhaa-sha-on kee jan-nee hai)' }
+        { front: 'Sanskrit is the mother of languages', back: 'संस्कृत भाषाओं की जननी है', pronunciation: '(san-skrit bhaa-sha-on kee jan-nee hai)' },
+        { front: 'I love you', back: 'मैं तुमसे प्यार करता हूँ', pronunciation: '(main tum-se pyaar kar-ta hoon)' }
       ]}
     ],
     korean: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: '안녕하세요', pronunciation: '(an-nyeong-ha-se-yo)' },
         { front: 'Love', back: '사랑', pronunciation: '(sa-rang)' },
-        { front: 'Beautiful', back: '아름다운', pronunciation: '(a-reum-da-un)' }
+        { front: 'Beautiful', back: '아름다운', pronunciation: '(a-reum-da-un)' },
+        { front: 'Sky', back: '하늘', pronunciation: '(ha-neul)' },
+        { front: 'Flower', back: '꽃', pronunciation: '(kkot)' },
+        { front: 'Star', back: '별', pronunciation: '(byeol)' },
+        { front: 'Cloud', back: '구름', pronunciation: '(gu-reum)' }
       ]},
       { level: 2, name: 'Greetings', cards: [
         { front: 'Nice to meet you', back: '반갑습니다', pronunciation: '(ban-gap-seum-ni-da)' },
         { front: 'I am sorry', back: '죄송합니다', pronunciation: '(joe-song-ham-ni-da)' },
-        { front: 'Happy Birthday', back: '생일 축하해요', pronunciation: '(saeng-il chuk-ha-hae-yo)' }
+        { front: 'Happy Birthday', back: '생일 축하해요', pronunciation: '(saeng-il chuk-ha-hae-yo)' },
+        { front: 'How have you been?', back: '잘 지냈어요?', pronunciation: '(jal ji-naess-eo-yo?)' }
       ]},
       { level: 3, name: 'Conversations', cards: [
         { front: 'Where are you from?', back: '어디에서 오셨어요?', pronunciation: '(eo-di-e-seo o-syeos-seo-yo?)' },
-        { front: 'I love Korean food', back: '한국 음식을 좋아해요', pronunciation: '(han-guk eum-sig-eul jo-a-hae-yo)' }
+        { front: 'I love Korean food', back: '한국 음식을 좋아해요', pronunciation: '(han-guk eum-sig-eul jo-a-hae-yo)' },
+        { front: 'What do you do for fun?', back: '취미가 뭐예요?', pronunciation: '(chwi-mi-ga mwo-ye-yo?)' }
       ]}
     ],
     kannada: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: 'ನಮಸ್ಕಾರ', pronunciation: '(na-mas-kaa-ra)' },
         { front: 'Morning', back: 'ಮುಂಜಾನೆ', pronunciation: '(mun-jaa-ne)' },
-        { front: 'Evening', back: 'ಸಂಜೆ', pronunciation: '(san-je)' }
+        { front: 'Evening', back: 'ಸಂಜೆ', pronunciation: '(san-je)' },
+        { front: 'Earth', back: 'ಭೂಮಿ', pronunciation: '(bhoo-mi)' },
+        { front: 'Air', back: 'ಗಾಳಿ', pronunciation: '(gaa-li)' },
+        { front: 'Fire', back: 'ಬೆಂಕಿ', pronunciation: '(ben-ki)' }
       ]},
       { level: 2, name: 'Phrases', cards: [
         { front: 'How are you?', back: 'ಹೇಗಿದ್ದೀರಾ?', pronunciation: '(he-gid-dee-ra?)' },
-        { front: 'I am fine', back: 'ನಾನು ಆರಾಮವಾಗಿದ್ದೇನೆ', pronunciation: '(naa-nu aa-raa-ma-vaa-gi-dee-ne)' }
+        { front: 'I am fine', back: 'ನಾನು ಆರಾಮವಾಗಿದ್ದೇನೆ', pronunciation: '(naa-nu aa-raa-ma-vaa-gi-dee-ne)' },
+        { front: 'What is your name?', back: 'ನಿಮ್ಮ ಹೆಸರೇನು?', pronunciation: '(nim-ma he-sa-re-nu?)' },
+        { front: 'Come here', back: 'ಇಲ್ಲಿ ಬಾ', pronunciation: '(il-li baa)' }
       ]},
       { level: 3, name: 'Sentences', cards: [
         { front: 'I love Kannada language', back: 'ನನಗೆ ಕನ್ನಡ ಭಾಷೆ ಇಷ್ಟ', pronunciation: '(na-na-ge kan-na-da bhaa-she ish-ta)' },
-        { front: 'Which city is this?', back: 'ಇದು ಯಾವ ಊರು?', pronunciation: '(i-du yaa-va oo-ru?)' }
+        { front: 'Which city is this?', back: 'ಇದು ಯಾವ ಊರು?', pronunciation: '(i-du yaa-va oo-ru?)' },
+        { front: 'Where is my friend?', back: 'ನನ್ನ ಗೆಳೆಯ ಎಲ್ಲಿದ್ದಾನೆ?', pronunciation: '(nan-na ge-le-ya el-lid-daa-ne?)' }
       ]}
     ],
     sanskrit: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: 'नमः', pronunciation: '(na-mah)' },
         { front: 'Knowledge', back: 'ज्ञानम्', pronunciation: '(jnyaa-nam)' },
-        { front: 'Truth', back: 'सत्यम्', pronunciation: '(sat-yam)' }
+        { front: 'Truth', back: 'सत्यम्', pronunciation: '(sat-yam)' },
+        { front: 'Peace', back: 'शान्तिः', pronunciation: '(shaan-tih)' },
+        { front: 'Light', back: 'ज्योतिः', pronunciation: '(jyo-tih)' },
+        { front: 'Action', back: 'कर्म', pronunciation: '(kar-ma)' }
       ]},
       { level: 2, name: 'Phrases', cards: [
         { front: 'All are well', back: 'सर्वे सन्तु निरामयाः', pronunciation: '(sarve santu ni-ra-ma-yah)' },
-        { front: 'Victory to India', back: 'जयतु भारतम्', pronunciation: '(ja-ya-tu bhaa-ra-tam)' }
+        { front: 'Victory to India', back: 'जयतु भारतम्', pronunciation: '(ja-ya-tu bhaa-ra-tam)' },
+        { front: 'Work is worship', back: 'कर्म एव पूजा अस्ति', pronunciation: '(kar-ma e-va poo-jaa as-ti)' }
       ]},
       { level: 3, name: 'Sentences', cards: [
         { front: 'God is everywhere', back: 'ईश्वरः सर्वत्र अस्ति', pronunciation: '(eesh-va-rah sar-va-tra as-ti)' },
-        { front: 'Knowledge is power', back: 'ज्ञानम् बलम् अस्ति', pronunciation: '(jnyaa-nam ba-lam as-ti)' }
+        { front: 'Knowledge is power', back: 'ज्ञानम् बलम् अस्ति', pronunciation: '(jnyaa-nam ba-lam as-ti)' },
+        { front: 'Speak the truth', back: 'सत्यं वद', pronunciation: '(sat-yam va-da)' }
       ]}
     ],
     chinese: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: '你好', pronunciation: '(nǐ hǎo)' },
         { front: 'Good', back: '好', pronunciation: '(hǎo)' },
-        { front: 'Friend', back: '朋友', pronunciation: '(péng yǒu)' }
+        { front: 'Friend', back: '朋友', pronunciation: '(péng yǒu)' },
+        { front: 'Teacher', back: '老师', pronunciation: '(lǎo shī)' },
+        { front: 'Student', back: '学生', pronunciation: '(xu xué sheng)' },
+        { front: 'School', back: '学校', pronunciation: '(xué xiào)' }
       ]},
       { level: 2, name: 'Greetings', cards: [
         { front: 'How are you?', back: '你好吗？', pronunciation: '(nǐ hǎo ma?)' },
-        { front: 'I am fine', back: '我很好', pronunciation: '(wǒ hěn hǎo)' }
+        { front: 'I am fine', back: '我很好', pronunciation: '(wǒ hěn hǎo)' },
+        { front: 'See you again', back: '再见', pronunciation: '(zài jiàn)' }
       ]},
       { level: 3, name: 'Sentences', cards: [
         { front: 'I am happy to meet you', back: '很高兴见到你', pronunciation: '(hěn gāo xìng jiàn dào nǐ)' },
-        { front: 'Do you speak Chinese?', back: '你会说中文吗？', pronunciation: '(nǐ huì shuō zhōng wén ma?)' }
+        { front: 'Do you speak Chinese?', back: '你会说中文吗？', pronunciation: '(nǐ huì shuō zhōng wén ma?)' },
+        { front: 'This is beautiful', back: '这很漂亮', pronunciation: '(zhè hěn piào liang)' }
       ]}
     ],
     italian: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: 'Ciao', pronunciation: '(chow)' },
         { front: 'Love', back: 'Amore', pronunciation: '(ah-moh-reh)' },
-        { front: 'Please', back: 'Per favore', pronunciation: '(per fa-voh-reh)' }
+        { front: 'Please', back: 'Per favore', pronunciation: '(per fa-voh-reh)' },
+        { front: 'Life', back: 'Vita', pronunciation: '(vee-tah)' },
+        { front: 'House', back: 'Casa', pronunciation: '(kah-sah)' },
+        { front: 'Time', back: 'Tempo', pronunciation: '(tem-poh)' }
       ]},
       { level: 2, name: 'Food', cards: [
         { front: 'One pizza please', back: 'Una pizza per favore', pronunciation: '(oo-nah peet-zah per fa-voh-reh)' },
-        { front: 'The wine is good', back: 'Il vino è buono', pronunciation: '(eel vee-no eh bwo-no)' }
+        { front: 'The wine is good', back: 'Il vino è buono', pronunciation: '(eel vee-no eh bwo-no)' },
+        { front: 'I like pasta', back: 'Mi piace la pasta', pronunciation: '(mee pyah-cheh lah pah-stah)' }
       ]},
       { level: 3, name: 'Travel', cards: [
         { front: 'Where is the train station?', back: 'Dov\'è la stazione?', pronunciation: '(dov-eh lah sta-tzee-oh-neh)' },
-        { front: 'I would like more water', back: 'Vorrei più acqua', pronunciation: '(vor-rey pyoo ak-kwah)' }
+        { front: 'I would like more water', back: 'Vorrei più acqua', pronunciation: '(vor-rey pyoo ak-kwah)' },
+        { front: 'I am in Italy', back: 'In Italia sono', pronunciation: '(een ee-tah-lyah soh-no)' }
       ]}
     ]
   },
