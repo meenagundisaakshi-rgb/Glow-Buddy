@@ -282,9 +282,12 @@
         </div>
 
         <div id="lexly-levels" class="hidden fade-in" style="margin-top: 20px;">
-          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
-             <button class="btn secondary-btn" onclick="app.exitLexly()" style="margin-top:0; padding: 10px 15px;">← Back to Decks</button>
-             <h3 id="lexly-level-title" style="margin: 0; color: var(--primary);">Levels</h3>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 10px;">
+             <div style="display: flex; align-items: center; gap: 15px;">
+               <button class="btn secondary-btn" onclick="app.exitLexly()" style="margin-top:0; padding: 10px 15px;">← Back</button>
+               <h3 id="lexly-level-title" style="margin: 0; color: var(--primary);">Levels</h3>
+             </div>
+             <button class="btn success-btn" onclick="app.startLexlyTest(true)" style="margin-top:0; padding: 10px 20px; font-weight: bold;">📝 Test Me!</button>
           </div>
           <div id="levels-grid" class="lexly-lang-grid">
             <!-- Dynamic levels go here -->
