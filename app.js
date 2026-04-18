@@ -809,20 +809,34 @@ const app = {
 
   // ── Lexly Test Engine ─────────────────────────────────────────────────────
 
-  startLexlyTest() {
-    // We test specifically on the deck the user just finished
-    const learnedCards = this.lexlyState.deck;
-    if (learnedCards.length < 2) {
+  startLexlyTest(useAllLevels = false) {
+    let testPool = [];
+    
+    if (useAllLevels) {
+      // Aggregate all cards from all levels for the current language
+      const langDecks = this.lexlyDecks[this.lexlyState.deckName];
+      langDecks.forEach(lvl => {
+        testPool = testPool.concat(lvl.cards);
+      });
+      // Store this pool as the "current deck" so wrong answers can be drawn from it
+      this.lexlyState.deck = testPool;
+    } else {
+      // Use specifically the deck the user just finished
+      testPool = this.lexlyState.deck;
+    }
+
+    if (testPool.length < 2) {
       alert("Practice a few more cards before taking the test!");
       return;
     }
 
     // Shuffle and pick up to 5 questions
-    const shuffled = [...learnedCards].sort(() => 0.5 - Math.random());
+    const shuffled = [...testPool].sort(() => 0.5 - Math.random());
     this.lexlyState.testState.questions = shuffled.slice(0, 5);
     this.lexlyState.testState.currentQuestionIndex = 0;
     this.lexlyState.testState.score = 0;
 
+    document.getElementById('lexly-levels').classList.add('hidden');
     document.getElementById('lexly-complete').classList.add('hidden');
     document.getElementById('lexly-test').classList.remove('hidden');
     
