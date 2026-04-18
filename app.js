@@ -531,97 +531,120 @@ const app = {
   
   // ── Lexly Language Flashcard Engine ──────────────────────────────────────
 
+  // ── Lexly Language Flashcard Engine (Upgraded with Levels) ────────────────
+
   lexlyDecks: {
     spanish: [
-      { front: 'Hello',        back: 'Hola',          pronunciation: '(oh-lah)' },
-      { front: 'Thank you',    back: 'Gracias',        pronunciation: '(gra-see-as)' },
-      { front: 'Please',       back: 'Por favor',      pronunciation: '(por fah-vor)' },
-      { front: 'Good morning', back: 'Buenos días',    pronunciation: '(bweh-nos dee-as)' },
-      { front: 'Goodbye',      back: 'Adiós',          pronunciation: '(ah-dee-os)' },
-      { front: 'Friend',       back: 'Amigo',          pronunciation: '(ah-mee-go)' },
-      { front: 'I love you',   back: 'Te quiero',      pronunciation: '(teh kyeh-ro)' },
-      { front: 'Beautiful',    back: 'Hermoso',        pronunciation: '(er-moh-so)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'Hola', pronunciation: '(oh-lah)' },
+        { front: 'Thank you', back: 'Gracias', pronunciation: '(gra-see-as)' },
+        { front: 'Friend', back: 'Amigo', pronunciation: '(ah-mee-go)' },
+        { front: 'Water', back: 'Agua', pronunciation: '(ah-gwah)' }
+      ]},
+      { level: 2, name: 'Common Phrases', cards: [
+        { front: 'How are you?', back: '¿Cómo estás?', pronunciation: '(koh-moh es-tah-s)' },
+        { front: 'My name is...', back: 'Mi nombre es...', pronunciation: '(mee nom-breh es)' },
+        { front: 'I like it', back: 'Me gusta', pronunciation: '(meh goos-tah)' }
+      ]},
+      { level: 3, name: 'Daily Conversations', cards: [
+        { front: 'Can you help me?', back: '¿Puedes ayudarme?', pronunciation: '(pweh-dehs ah-yoo-dar-meh)' },
+        { front: 'Where is the library?', back: '¿Dónde está la biblioteca?', pronunciation: '(don-deh es-tah lah beeb-lee-oh-teh-kah)' }
+      ]}
     ],
     french: [
-      { front: 'Hello',        back: 'Bonjour',        pronunciation: '(bon-zhoor)' },
-      { front: 'Thank you',    back: 'Merci',          pronunciation: '(mehr-see)' },
-      { front: 'Please',       back: "S'il vous plaît",pronunciation: "(seel voo pleh)" },
-      { front: 'Good night',   back: 'Bonne nuit',     pronunciation: '(bon nwee)' },
-      { front: 'Goodbye',      back: 'Au revoir',      pronunciation: '(oh ruh-vwah)' },
-      { front: 'Friend',       back: 'Ami',            pronunciation: '(ah-mee)' },
-      { front: 'I love you',   back: "Je t'aime",      pronunciation: "(zhuh tem)" },
-      { front: 'Beautiful',    back: 'Beau',           pronunciation: '(boh)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'Bonjour', pronunciation: '(bon-zhoor)' },
+        { front: 'Book', back: 'Livre', pronunciation: '(leev-ruh)' },
+        { front: 'Yes', back: 'Oui', pronunciation: '(wee)' }
+      ]},
+      { level: 2, name: 'Greetings', cards: [
+        { front: 'Nice to meet you', back: 'Enchanté', pronunciation: '(ahn-shahn-tay)' },
+        { front: 'How is it going?', back: 'Comment ça va?', pronunciation: '(koh-mahn sah vah)' }
+      ]},
+      { level: 3, name: 'Sentences', cards: [
+        { front: 'I would like a coffee', back: 'Je voudrais un café', pronunciation: '(zhuh voo-dreh uhn kah-fay)' }
+      ]}
     ],
     japanese: [
-      { front: 'Hello',        back: 'こんにちは',      pronunciation: '(kon-ni-chi-wa)' },
-      { front: 'Thank you',    back: 'ありがとう',      pronunciation: '(a-ri-ga-toh)' },
-      { front: 'Please',       back: 'おねがいします',  pronunciation: '(o-ne-gai-shi-mas)' },
-      { front: 'Good morning', back: 'おはよう',        pronunciation: '(o-ha-yoh)' },
-      { front: 'Goodbye',      back: 'さようなら',      pronunciation: '(sa-yo-na-ra)' },
-      { front: 'Friend',       back: '友達',            pronunciation: '(to-mo-da-chi)' },
-      { front: 'I love you',   back: '愛してる',        pronunciation: '(ai-shi-te-ru)' },
-      { front: 'Beautiful',    back: '美しい',          pronunciation: '(u-tsu-ku-shi-i)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'こんにちは', pronunciation: '(kon-ni-chi-wa)' },
+        { front: 'School', back: '学校', pronunciation: '(gak-koh)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'Thank you very much', back: 'どうもありがとうございます', pronunciation: '(doh-mo a-ri-ga-toh go-zai-mas)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'お名前は何ですか？', pronunciation: '(o-na-ma-e wa nan-des-ka?)' }
+      ]}
     ],
     chinese: [
-      { front: 'Hello',        back: '你好',            pronunciation: '(nǐ hǎo)' },
-      { front: 'Thank you',    back: '谢谢',            pronunciation: '(xiè xiè)' },
-      { front: 'Please',       back: '请',              pronunciation: '(qǐng)' },
-      { front: 'Good morning', back: '早上好',          pronunciation: '(zǎo shang hǎo)' },
-      { front: 'Goodbye',      back: '再见',            pronunciation: '(zài jiàn)' },
-      { front: 'Friend',       back: '朋友',            pronunciation: '(péng yǒu)' },
-      { front: 'I love you',   back: '我爱你',          pronunciation: '(wǒ ài nǐ)' },
-      { front: 'Beautiful',    back: '美丽',            pronunciation: '(měi lì)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: '你好', pronunciation: '(nǐ hǎo)' },
+        { front: 'Person', back: '人', pronunciation: '(rén)' }
+      ]},
+      { level: 2, name: 'Greetings', cards: [
+        { front: 'How are you?', back: '你好吗？', pronunciation: '(nǐ hǎo ma?)' }
+      ]},
+      { level: 3, name: 'Sentences', cards: [
+        { front: 'I am happy to meet you', back: '很高兴见到你', pronunciation: '(hěn gāo xìng jiàn dào nǐ)' }
+      ]}
     ],
     hindi: [
-      { front: 'Hello',        back: 'नमस्ते',          pronunciation: '(na-mas-tay)' },
-      { front: 'Thank you',    back: 'धन्यवाद',         pronunciation: '(dhan-ya-vaad)' },
-      { front: 'Please',       back: 'कृपया',           pronunciation: '(krip-ya)' },
-      { front: 'Good morning', back: 'सुप्रभात',         pronunciation: '(su-pra-bhaat)' },
-      { front: 'Goodbye',      back: 'अलविदा',          pronunciation: '(al-vi-daa)' },
-      { front: 'Friend',       back: 'दोस्त',           pronunciation: '(dost)' },
-      { front: 'I love you',   back: 'मैं तुमसे प्यार करता हूँ', pronunciation: '(main tumse pyaar karta hoon)' },
-      { front: 'Beautiful',    back: 'सुंदर',           pronunciation: '(sun-dar)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'नमस्ते', pronunciation: '(na-mas-tay)' },
+        { front: 'Mother', back: 'माँ', pronunciation: '(maa)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'What are you doing?', back: 'आप क्या कर रहे हैं?', pronunciation: '(aap kya kar rahe hain?)' }
+      ]},
+      { level: 3, name: 'Sentences', cards: [
+        { front: 'I live in India', back: 'मैं भारत में रहता हूँ', pronunciation: '(main bha-rat mein reh-ta hoon)' }
+      ]}
     ],
     korean: [
-      { front: 'Hello',        back: '안녕하세요',       pronunciation: '(an-nyeong-ha-se-yo)' },
-      { front: 'Thank you',    back: '감사합니다',       pronunciation: '(gam-sa-ham-ni-da)' },
-      { front: 'Please',       back: '주세요',           pronunciation: '(ju-se-yo)' },
-      { front: 'Good morning', back: '좋은 아침',        pronunciation: '(jo-eun a-chim)' },
-      { front: 'Goodbye',      back: '안녕히 가세요',    pronunciation: '(an-nyeong-hi ga-se-yo)' },
-      { front: 'Friend',       back: '친구',             pronunciation: '(chin-gu)' },
-      { front: 'I love you',   back: '사랑해요',         pronunciation: '(sa-rang-hae-yo)' },
-      { front: 'Beautiful',    back: '아름다운',         pronunciation: '(a-reum-da-un)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: '안녕하세요', pronunciation: '(an-nyeong-ha-se-yo)' }
+      ]},
+      { level: 2, name: 'Greetings', cards: [
+        { front: 'Nice to meet you', back: '반갑습니다', pronunciation: '(ban-gap-seum-ni-da)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'Where are you from?', back: '어디에서 오셨어요?', pronunciation: '(eo-di-e-seo o-syeos-seo-yo?)' }
+      ]}
     ],
     kannada: [
-      { front: 'Hello',        back: 'ನಮಸ್ಕಾರ',         pronunciation: '(na-mas-kaa-ra)' },
-      { front: 'Thank you',    back: 'ಧನ್ಯವಾದ',          pronunciation: '(dhan-ya-vaad-a)' },
-      { front: 'Please',       back: 'ದಯವಿಟ್ಟು',          pronunciation: '(da-ya-vit-tu)' },
-      { front: 'Good morning', back: 'ಶುಭ ಮುಂಜಾನೆ',      pronunciation: '(shu-bha mun-jaa-ne)' },
-      { front: 'Goodbye',      back: 'ವಿದಾಯ',            pronunciation: '(vi-daa-ya)' },
-      { front: 'Friend',       back: 'ಗೆಳೆಯ',             pronunciation: '(ge-le-ya)' },
-      { front: 'I love you',   back: 'ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ', pronunciation: '(naa-nu nin-nan-nu pree-ti-sut-tee-ne)' },
-      { front: 'Beautiful',    back: 'ಸುಂದರ',            pronunciation: '(sun-da-ra)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'ನಮಸ್ಕಾರ', pronunciation: '(na-mas-kaa-ra)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'ಹೇಗಿದ್ದೀರಾ?', pronunciation: '(he-gid-dee-ra?)' }
+      ]},
+      { level: 3, name: 'Sentences', cards: [
+        { front: 'I love Kannada language', back: 'ನನಗೆ ಕನ್ನಡ ಭಾಷೆ ಇಷ್ಟ', pronunciation: '(na-na-ge kan-na-da bhaa-she ish-ta)' }
+      ]}
     ],
     sanskrit: [
-      { front: 'Hello',        back: 'नमः',              pronunciation: '(na-mah)' },
-      { front: 'Thank you',    back: 'धन्यवादः',          pronunciation: '(dhan-ya-vaa-dah)' },
-      { front: 'Please',       back: 'कृपया',             pronunciation: '(krip-ya-yaa)' },
-      { front: 'Good morning', back: 'सुप्रभातम्',         pronunciation: '(su-pra-bhaa-tam)' },
-      { front: 'Goodbye',      back: 'पुनर्मिलाम',         pronunciation: '(pu-nar-mi-laa-mah)' },
-      { front: 'Friend',       back: 'मित्रम्',            pronunciation: '(mi-tram)' },
-      { front: 'I love you',   back: 'अहं त्वां प्रेमि',  pronunciation: '(aham tvaam premi)' },
-      { front: 'Beautiful',    back: 'सुन्दरम्',           pronunciation: '(sun-da-ram)' },
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'नमः', pronunciation: '(na-mah)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'All are well', back: 'सर्वे सन्तु निरामयाः', pronunciation: '(sarve santu ni-ra-ma-yah)' }
+      ]},
+      { level: 3, name: 'Sentences', cards: [
+        { front: 'God is everywhere', back: 'ईश्वरः सर्वत्र अस्ति', pronunciation: '(eesh-va-rah sar-va-tra as-ti)' }
+      ]}
     ],
     italian: [
-      { front: 'Hello',        back: 'Ciao',              pronunciation: '(chow)' },
-      { front: 'Thank you',    back: 'Grazie',            pronunciation: '(grat-tsee-eh)' },
-      { front: 'Please',       back: 'Per favore',        pronunciation: '(per fa-voh-reh)' },
-      { front: 'Good morning', back: 'Buongiorno',        pronunciation: '(bwon-jor-noh)' },
-      { front: 'Goodbye',      back: 'Arrivederci',       pronunciation: '(a-ree-veh-der-chee)' },
-      { front: 'Friend',       back: 'Amico',             pronunciation: '(a-mee-koh)' },
-      { front: 'I love you',   back: 'Ti amo',            pronunciation: '(tee ah-moh)' },
-      { front: 'Beautiful',    back: 'Bello',             pronunciation: '(bel-loh)' },
-    ],
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'Ciao', pronunciation: '(chow)' }
+      ]},
+      { level: 2, name: 'Food', cards: [
+        { front: 'One pizza please', back: 'Una pizza per favore', pronunciation: '(oo-nah peet-zah per fa-voh-reh)' }
+      ]},
+      { level: 3, name: 'Travel', cards: [
+        { front: 'Where is the train station?', back: 'Dov\'è la stazione?', pronunciation: '(dov-eh lah sta-tzee-oh-neh)' }
+      ]}
+    ]
   },
 
   lexlyState: {
@@ -629,19 +652,46 @@ const app = {
     currentIndex: 0,
     isFlipped: false,
     deckName: '',
+    currentLevel: 1
   },
 
-  loadLexlyDeck(lang) {
-    const deck = this.lexlyDecks[lang];
-    if (!deck) return;
+  showLexlyLevels(lang) {
+    const levels = this.lexlyDecks[lang];
+    if (!levels) return;
 
-    this.lexlyState.deck = deck;
+    this.lexlyState.deckName = lang;
+    document.getElementById('lexly-categories').classList.add('hidden');
+    document.getElementById('lexly-flashcards').classList.add('hidden');
+    document.getElementById('lexly-levels').classList.remove('hidden');
+    document.getElementById('lexly-level-title').innerText = `${lang.charAt(0).toUpperCase() + lang.slice(1)} Levels`;
+
+    const grid = document.getElementById('levels-grid');
+    grid.innerHTML = '';
+
+    levels.forEach(l => {
+      const card = document.createElement('div');
+      card.className = 'lexly-lang-card';
+      card.onclick = () => this.loadLexlyDeck(lang, l.level);
+      card.innerHTML = `
+        <div style="font-size: 2.5rem; margin-bottom: 10px;">${l.level === 1 ? '🌱' : l.level === 2 ? '🌿' : '🌳'}</div>
+        <h4>Level ${l.level}: ${l.name}</h4>
+        <p>${l.cards.length} Cards</p>
+      `;
+      grid.appendChild(card);
+    });
+  },
+
+  loadLexlyDeck(lang, level = 1) {
+    const levels = this.lexlyDecks[lang];
+    const deckData = levels.find(l => l.level === level);
+    if (!deckData) return;
+
+    this.lexlyState.deck = deckData.cards;
     this.lexlyState.currentIndex = 0;
     this.lexlyState.isFlipped = false;
-    this.lexlyState.deckName = lang;
+    this.lexlyState.currentLevel = level;
 
-    document.getElementById('lexly-categories').classList.add('hidden');
-    document.getElementById('lexly-complete').classList.add('hidden');
+    document.getElementById('lexly-levels').classList.add('hidden');
     document.getElementById('lexly-flashcards').classList.remove('hidden');
     document.getElementById('lexly-controls').classList.add('hidden');
 
@@ -708,8 +758,8 @@ const app = {
   exitLexly() {
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     document.getElementById('lexly-flashcards').classList.add('hidden');
+    document.getElementById('lexly-levels').classList.add('hidden');
     document.getElementById('lexly-complete').classList.add('hidden');
-    document.getElementById('lexly-pronouncer').classList.add('hidden');
     document.getElementById('lexly-categories').classList.remove('hidden');
     document.getElementById('lexly-progress').style.width = '0%';
   },
