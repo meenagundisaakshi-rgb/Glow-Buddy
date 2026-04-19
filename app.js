@@ -759,6 +759,53 @@ const app = {
         { front: 'Do you speak English?', back: 'நீங்க ஆங்கிலம் பேசுவீங்களா?', pronunciation: '(neeng-ga aan-gi-lam pe-su-veeng-ga-la?)' },
         { front: 'Where is the hospital?', back: 'மருத்துவமனை எங்கே இருக்கிறது?', pronunciation: '(ma-ruth-thu-va-ma-nai en-ge iruk-ki-radhu?)' }
       ]}
+    ],
+    telugu: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'నమస్కారం', pronunciation: '(na-mas-kaa-ram)' },
+        { front: 'Mother', back: 'అమ్మ', pronunciation: '(am-ma)' },
+        { front: 'Father', back: 'నాన్న', pronunciation: '(naan-na)' },
+        { front: 'Water', back: 'నీళ్లు', pronunciation: '(neel-lu)' },
+        { front: 'Book', back: 'పుస్తకం', pronunciation: '(pus-tha-kam)' },
+        { front: 'Friend', back: 'స్నేహితుడు', pronunciation: '(sne-hi-thu-du)' },
+        { front: 'Sun', back: 'సూర్యుడు', pronunciation: '(soo-ryu-du)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'ఎలా ఉన్నారు?', pronunciation: '(e-laa un-naa-ru?)' },
+        { front: 'My name is...', back: 'నా పేరు...', pronunciation: '(naa pe-ru...)' },
+        { front: 'Thank you', back: 'ధన్యవాదాలు', pronunciation: '(dha-nya-vaa-daa-lu)' },
+        { front: 'I am hungry', back: 'నాకు ఆకలిగా ఉంది', pronunciation: '(naa-ku aa-ka-li-gaa un-di)' },
+        { front: 'What is the time?', back: 'సమయం ఎంత?', pronunciation: '(sa-ma-yam en-tha?)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'మీ పేరు ఏమిటి?', pronunciation: '(mee pe-ru e-mi-ti?)' },
+        { front: 'I am learning Telugu', back: 'నేను తెలుగు నేర్చుకుంటున్నాను', pronunciation: '(ne-nu te-lu-gu ner-chu-kun-tun-naa-nu)' },
+        { front: 'I like this place', back: 'నాకు ఈ స్థలం ఇష్టం', pronunciation: '(naa-ku ee stha-lam ish-tam)' },
+        { front: 'Where is the market?', back: 'మార్కెట్ ఎక్కడ ఉంది?', pronunciation: '(maar-ket ek-ka-da un-di?)' }
+      ]}
+    ],
+    malayalam: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'നമസ്കാരം', pronunciation: '(na-mas-kaa-ram)' },
+        { front: 'Mother', back: 'അമ്മ', pronunciation: '(am-ma)' },
+        { front: 'Father', back: 'അച്ഛൻ', pronunciation: '(ac-chan)' },
+        { front: 'Water', back: 'വെള്ളം', pronunciation: '(vel-lam)' },
+        { front: 'Friend', back: 'കൂട്ടുകാരൻ', pronunciation: '(koot-tu-kaa-ran)' },
+        { front: 'House', back: 'വീട്', pronunciation: '(vee-du)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'സുഖമാണോ?', pronunciation: '(su-kha-maa-no?)' },
+        { front: 'My name is...', back: 'என்റെ പേര്...', pronunciation: '(en-te pe-ru...)' },
+        { front: 'Thank you', back: 'നന്ദി', pronunciation: '(nan-ni)' },
+        { front: 'I am fine', back: 'എനിക്ക് സുഖമാണ്', pronunciation: '(e-nik-ku su-kha-ma-nu)' },
+        { front: 'Help me', back: 'എന്നെ സഹായിക്കൂ', pronunciation: '(en-ne sa-haa-yi-koo)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'നിങ്ങളുടെ പേര് എന്താണ്?', pronunciation: '(nin-ga-lu-de pe-ru en-thaa-nu?)' },
+        { front: 'I am learning Malayalam', back: 'ഞാൻ മലയാളം പഠിക്കുന്നു', pronunciation: '(njaan ma-la-yaa-lam pa-dik-kun-nu)' },
+        { front: 'Where is the school?', back: 'സ്കൂൾ എവിടെയാണ്?', pronunciation: '(skool e-vi-de-yaa-nu?)' },
+        { front: 'I love Kerala', back: 'എനിക്ക് കേരളം ഇഷ്ടമാണ്', pronunciation: '(e-nik-ku ke-ra-lam ish-ta-maa-nu)' }
+      ]}
     ]
   },
 
@@ -989,7 +1036,9 @@ const app = {
     kannada:  'kn-IN',
     sanskrit: 'hi-IN',   // closest available locale
     italian:  'it-IT',
-    tamil:    'ta-IN'
+    tamil:    'ta-IN',
+    telugu:   'te-IN',
+    malayalam: 'ml-IN'
   },
 
   lexlySpeak(face) {
