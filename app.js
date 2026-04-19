@@ -1024,6 +1024,15 @@ const app = {
   },
 
 
+  exitLexly() {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    document.getElementById('lexly-flashcards').classList.add('hidden');
+    document.getElementById('lexly-levels').classList.add('hidden');
+    document.getElementById('lexly-complete').classList.add('hidden');
+    document.getElementById('lexly-test').classList.add('hidden');
+    document.getElementById('lexly-categories').classList.remove('hidden');
+    document.getElementById('lexly-progress').style.width = '0%';
+  },
 
   // BCP-47 locale codes per language
   lexlyLocales: {
