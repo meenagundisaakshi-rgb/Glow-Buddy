@@ -767,6 +767,30 @@ const app = {
         { front: 'Where is the hospital?', back: 'மருத்துவமனை எங்கே இருக்கிறது?', pronunciation: '(ma-ruth-thu-va-ma-nai en-ge iruk-ki-radhu?)' }
       ]}
     ],
+    tamil: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'வணக்கம்', pronunciation: '(va-nak-kam)' },
+        { front: 'Mother', back: 'அம்மா', pronunciation: '(am-ma)' },
+        { front: 'Father', back: 'அப்பா', pronunciation: '(ap-pa)' },
+        { front: 'Water', back: 'தண்ணீர்', pronunciation: '(than-neer)' },
+        { front: 'Book', back: 'புத்தகம்', pronunciation: '(puth-tha-gam)' },
+        { front: 'Friend', back: 'நண்பன்', pronunciation: '(nan-ban)' },
+        { front: 'Student', back: 'மாணவன்', pronunciation: '(maa-na-van)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'எப்படி இருக்கீங்க?', pronunciation: '(ep-pa-di iruk-keeng-ga?)' },
+        { front: 'My name is...', back: 'என் பெயர்...', pronunciation: '(en pe-yar...)' },
+        { front: 'Thank you', back: 'நன்றி', pronunciation: '(nan-ri)' },
+        { front: 'I am hungry', back: 'எனக்கு பசிக்கிறது', pronunciation: '(e-nak-ku pa-si-kki-ra-dhu)' },
+        { front: 'What is the time?', back: 'மணி என்ன?', pronunciation: '(ma-ni en-na?)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'உங்க பெயர் என்ன?', pronunciation: '(un-ga pe-yar en-na?)' },
+        { front: 'I am learning Tamil', back: 'நான் தமிழ் கற்கிறேன்', pronunciation: '(naan tha-mizh kar-ki-ren)' },
+        { front: 'Do you speak English?', back: 'நீங்க ஆங்கிலம் பேசுவீங்களா?', pronunciation: '(neeng-ga aan-gi-lam pe-su-veeng-ga-la?)' },
+        { front: 'Where is the hospital?', back: 'மருத்துவமனை எங்கே இருக்கிறது?', pronunciation: '(ma-ruth-thu-va-ma-nai en-ge iruk-ki-radhu?)' }
+      ]}
+    ],
     telugu: [
       { level: 1, name: 'Basics', cards: [
         { front: 'Hello', back: 'నమస్కారం', pronunciation: '(na-mas-kaa-ram)' },
