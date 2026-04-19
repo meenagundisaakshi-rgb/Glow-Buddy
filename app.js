@@ -27,7 +27,13 @@ const app = {
     ]
   },
   
-  init() {
+  badges: [
+    { id: 'starter', name: 'Starter Spark', desc: 'Write your first journal entry.', icon: '🌱', unlocked: false },
+    { id: 'quiz', name: 'Check-In Pro', desc: 'Finish the Daily Check-In Paper.', icon: '📋', unlocked: false },
+    { id: 'zen', name: 'Zen Master', desc: 'Take a moment for a breathing exercise.', icon: '🧘', unlocked: false },
+    { id: 'lexly_master', name: 'Language Legend', desc: 'Score 5/5 in any Lexly test.', icon: '🏆', unlocked: false },
+    { id: 'gratitude', name: 'Gratitude Guru', desc: 'Save an item to your Gratitude Jar.', icon: '🏺', unlocked: false }
+  ],
     this.cacheDOM();
     this.handleLocalEnvironment();
     this.bindEvents();
@@ -223,6 +229,7 @@ const app = {
     }
 
     this.activeScreen = target;
+    if (target === 'badges') this.checkBadges();
     
     this.navItems.forEach(item => {
       if (item.getAttribute('data-target') === target) {
@@ -1016,13 +1023,51 @@ const app = {
       if (ts.currentQuestionIndex >= ts.questions.length) {
         alert(`Test Finished! You scored ${ts.score} out of ${ts.questions.length}.`);
         this.exitLexly();
-        this.checkBadges(); // Maybe trigger a badge?
+        this.checkBadges(); 
       } else {
         this.renderLexlyTestQuestion();
       }
     }, 1500);
   },
 
+  checkBadges() {
+    let changed = false;
+    const stats = {
+      journalCount: this.journalEntries.length,
+      highLexlyScore: this.lexlyState.testState.score === 5 && this.lexlyState.testState.currentQuestionIndex >= 4,
+      gratitudeSaved: !!localStorage.getItem('gratitude_history')
+    };
+
+    this.badges.forEach(b => {
+      if (!b.unlocked) {
+        if (b.id === 'starter' && stats.journalCount > 0) { b.unlocked = true; changed = true; }
+        if (b.id === 'lexly_master' && stats.highLexlyScore) { b.unlocked = true; changed = true; }
+        if (b.id === 'gratitude' && stats.gratitudeSaved) { b.unlocked = true; changed = true; }
+        if (b.id === 'zen' && this.activeScreen === 'breathe' && this.breatheInterval) { b.unlocked = true; changed = true; }
+      }
+    });
+
+    if (this.activeScreen === 'badges' || changed) {
+       this.renderBadges();
+    }
+  },
+
+  renderBadges() {
+    const container = document.getElementById('badges-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    this.badges.forEach(b => {
+      const card = document.createElement('div');
+      card.className = `badge-card ${b.unlocked ? 'unlocked' : 'locked'}`;
+      card.innerHTML = `
+        <div class="badge-icon">${b.icon}</div>
+        <div class="badge-name">${b.name}</div>
+        <div class="badge-desc">${b.desc}</div>
+      `;
+      container.appendChild(card);
+    });
+  },
 
   exitLexly() {
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
