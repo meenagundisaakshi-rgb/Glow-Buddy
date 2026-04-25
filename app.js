@@ -599,6 +599,7 @@ const app = {
         { front: 'See you later', back: 'À plus tard', pronunciation: '(ah ploo tar)' },
         { front: 'Very well', back: 'Très bien', pronunciation: '(treh byahn)' }
       ]},
+      // French levels (3 levels fully implemented)
       { level: 3, name: 'Sentences', cards: [
         { front: 'I would like a coffee', back: 'Je voudrais un café', pronunciation: '(zhuh voo-dreh uhn kah-fay)' },
         { front: 'What time is it?', back: 'Quelle heure est-il?', pronunciation: '(kel er eh-teel)' },
