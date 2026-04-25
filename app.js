@@ -830,6 +830,78 @@ const app = {
         { front: 'Where is the school?', back: 'സ്കൂൾ എവിടെയാണ്?', pronunciation: '(skool e-vi-de-yaa-nu?)' },
         { front: 'I love Kerala', back: 'എനിക്ക് കേരളം ഇഷ്ടമാണ്', pronunciation: '(e-nik-ku ke-ra-lam ish-ta-maa-nu)' }
       ]}
+    ],
+    portuguese: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'Olá', pronunciation: '(oh-la)' },
+        { front: 'Thank you', back: 'Obrigado', pronunciation: '(ob-ree-gah-doo)' },
+        { front: 'Please', back: 'Por favor', pronunciation: '(por fa-vor)' },
+        { front: 'Yes', back: 'Sim', pronunciation: '(seem)' },
+        { front: 'No', back: 'Não', pronunciation: '(now)' },
+        { front: 'Water', back: 'Água', pronunciation: '(ah-gwah)' },
+        { front: 'Friend', back: 'Amigo', pronunciation: '(ah-mee-go)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'Como vai?', pronunciation: '(ko-mo vay?)' },
+        { front: 'Good morning', back: 'Bom dia', pronunciation: '(bom jee-ah)' },
+        { front: 'My name is...', back: 'Meu nome é...', pronunciation: '(mew no-mee eh...)' },
+        { front: 'I like it', back: 'Eu gosto', pronunciation: '(ew gos-too)' },
+        { front: 'Excuse me', back: 'Com licença', pronunciation: '(kom lee-sen-sah)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'Qual o seu nome?', pronunciation: '(kwal oo seh-oo no-mee?)' },
+        { front: 'I am learning Portuguese', back: 'Estou aprendendo português', pronunciation: '(es-toh a-pren-den-doo por-tu-geys)' },
+        { front: 'Where is the hotel?', back: 'Onde fica o hotel?', pronunciation: '(on-jee fee-ka oo o-tel?)' },
+        { front: 'I love Brazil', back: 'Eu amo o Brasil', pronunciation: '(ew ah-mo oo bra-zeel)' }
+      ]}
+    ],
+    german: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'Hallo', pronunciation: '(hal-low)' },
+        { front: 'Thank you', back: 'Danke', pronunciation: '(dan-keh)' },
+        { front: 'Please', back: 'Bitte', pronunciation: '(bit-teh)' },
+        { front: 'Yes', back: 'Ja', pronunciation: '(yah)' },
+        { front: 'No', back: 'Nein', pronunciation: '(nine)' },
+        { front: 'Bread', back: 'Brot', pronunciation: '(broht)' },
+        { front: 'Water', back: 'Wasser', pronunciation: '(vahs-ser)' },
+        { front: 'School', back: 'Schule', pronunciation: '(shoo-leh)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'Wie geht es dir?', pronunciation: '(vee geyt es deer?)' },
+        { front: 'Good morning', back: 'Guten Morgen', pronunciation: '(goo-ten mor-gen)' },
+        { front: 'My name is...', back: 'Ich heiße...', pronunciation: '(ikh hy-seh...)' },
+        { front: 'I am sorry', back: 'Es tut mir leid', pronunciation: '(es toot meer lite)' },
+        { front: 'See you later', back: 'Bis später', pronunciation: '(bis shpay-ter)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'Wie heißen Sie?', pronunciation: '(vee hy-sen zee?)' },
+        { front: 'I am learning German', back: 'Ich lerne Deutsch', pronunciation: '(ikh ler-neh doytsh)' },
+        { front: 'Where is the park?', back: 'Wo ist der Park?', pronunciation: '(voh ist der park?)' },
+        { front: 'I love Berlin', back: 'Ich liebe Berlin', pronunciation: '(ikh lee-beh ber-leen)' }
+      ]}
+    ],
+    marathi: [
+      { level: 1, name: 'Basics', cards: [
+        { front: 'Hello', back: 'नमस्कार', pronunciation: '(na-mas-kaar)' },
+        { front: 'Mother', back: 'आई', pronunciation: '(aa-ee)' },
+        { front: 'Father', back: 'बाबा', pronunciation: '(baa-baa)' },
+        { front: 'Water', back: 'पाणी', pronunciation: '(paa-nee)' },
+        { front: 'School', back: 'शाळा', pronunciation: '(shaa-laa)' },
+        { front: 'Friend', back: 'मित्र', pronunciation: '(mi-tra)' }
+      ]},
+      { level: 2, name: 'Phrases', cards: [
+        { front: 'How are you?', back: 'तू कसा आहेस?', pronunciation: '(too ka-saa aa-hes?)' },
+        { front: 'Good morning', back: 'शुभ सकाळ', pronunciation: '(shubh sa-kaal)' },
+        { front: 'My name is...', back: 'माझे नाव...', pronunciation: '(maa-zhe naav...)' },
+        { front: 'Thank you', back: 'धन्यवाद', pronunciation: '(dha-nya-vaad)' },
+        { front: 'Come here', back: 'इकडे ये', pronunciation: '(ik-de ye)' }
+      ]},
+      { level: 3, name: 'Conversations', cards: [
+        { front: 'What is your name?', back: 'तुझे नाव काय आहे?', pronunciation: '(tu-zhe naav kay aa-he?)' },
+        { front: 'I am learning Marathi', back: 'मी मराठी शिकत आहे', pronunciation: '(mee ma-raa-thee shi-kat aa-he)' },
+        { front: 'I like Maharashtra', back: 'मला महाराष्ट्र आवडतो', pronunciation: '(ma-laa ma-ha-raash-tra aa-vad-to)' },
+        { front: 'Where is the temple?', back: 'मंदिर कुठे आहे?', pronunciation: '(man-deer ku-the aa-he?)' }
+      ]}
     ]
   },
 
