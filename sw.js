@@ -1,4 +1,4 @@
-const CACHE_NAME = 'glow-buddy-v1';
+const CACHE_NAME = 'glow-buddy-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
