@@ -34,6 +34,8 @@ const app = {
     { id: 'lexly_master', name: 'Language Legend', desc: 'Score 5/5 in any Lexly test.', icon: '🏆', unlocked: false },
     { id: 'gratitude', name: 'Gratitude Guru', desc: 'Save an item to your Gratitude Jar.', icon: '🏺', unlocked: false }
   ],
+
+  init() {
     this.cacheDOM();
     this.handleLocalEnvironment();
     this.bindEvents();
@@ -142,16 +144,30 @@ const app = {
         return;
       }
       
-      let insight = "That sounds like a really heavy burden to carry around. Thank you so much for being brave enough to write it down here. Whatever you are facing, your feelings are 100% valid. Everyone struggles and has bad days, but you have incredible inner strength to overcome this challenge. Take a deep breath. You are not alone in feeling this way, and the fact that you are reaching out shows tremendous courage. Remember that tough times don't last, but tough people do. Be patient with yourself and treat yourself with the same kindness you would show your best friend.";
+      let insight = "";
       
       if (text.match(/(exam|exams|school|study|marks|test|grades|fail|homework|tuition|board)/)) {
-        insight = "It sounds like you're experiencing a lot of academic pressure right now, and that is completely understandable. In India, we grow up surrounded by the idea that marks define our future, but that is simply not true. A test score does not measure your intelligence, your creativity, your kindness, or your worth as a human being. Some of the most successful people in the world struggled in school. What truly matters is the effort you are putting in and the lessons you learn along the way. Take a deep breath right now. You are doing your best, and your best is always enough. Focus on progress, not perfection.";
+        insight = "It sounds like you're feeling academic pressure. Remember, a test score doesn't define your intelligence or your worth. Focus on your effort, take things one step at a time, and don't forget to take breaks.";
       } else if (text.match(/(instagram|snapchat|ugly|fat|looks|skinny|follower|social media|compare|tiktok|reel|beautiful|pretty|handsome|dark|fair|skin|weight|tall|short)/)) {
-        insight = "It seems like you might be caught in the social comparison trap, and I want you to know that you are absolutely not alone in feeling this way. When we scroll through social media, we usually only see everyone's highlight reel - the best, most filtered, most carefully curated moments of their lives. Nobody posts their bad days, their insecurities, or their struggles. Comparing your real, beautifully complex life to someone else's fake online persona is never going to be a fair comparison. You are completely unique, and the world needs exactly who you are. Your beauty is not defined by filters or follower counts. It is defined by your kindness, your laughter, and the light you bring into the world.";
+        insight = "Social media only shows the highlights, not real life. Comparing yourself to filters isn't fair to you. You are unique, and your true worth is defined by your kindness and character, not by how you look online.";
       } else if (text.match(/(friend|friends|lonely|hate|mean|bully|ignored|left out|alone|fight|nobody|no one|talk|popular)/)) {
-        insight = "Friendship issues and feeling left out can be one of the most deeply painful experiences, especially during your school years. It is completely natural to feel hurt, lonely, or upset when the people around you aren't treating you with the kindness and respect you deserve. But here is something really important to remember: how others treat you is almost always a reflection of what THEY are going through internally, not a reflection of your value as a person. You are worthy of love, respect, and genuine friendship. The right people will find you and appreciate you for exactly who you are. In the meantime, be your own best friend. Treat yourself with compassion and never dim your light to fit in with others.";
+        insight = "Friendship issues can hurt deeply. Try to remember that how others treat you usually reflects their own struggles, not your value. You deserve kindness and genuine friends. Keep being yourself.";
       } else if (text.match(/(parent|parents|mom|dad|family|mum|mother|father|sister|brother|home|shout|yell|scold)/)) {
-        insight = "Family situations can feel incredibly overwhelming, especially when you feel like the people closest to you don't fully understand what you're going through. It is important to remember that your parents and family members are human too, and sometimes they express their love and concern in ways that feel harsh or confusing. Even when home life is tough, your feelings are completely valid. You deserve to feel safe and heard. If things ever feel too heavy, please consider talking to a trusted teacher, school counselor, or calling a helpline. You are never truly alone, even when it feels that way.";
+        insight = "Family situations can be overwhelming. Even if they don't understand you right now, your feelings are valid. Try communicating calmly when things cool down, and remember it's okay to seek support.";
+      } else if (text.match(/(sad|depressed|cry|crying|tears|unhappy|miserable|down|hopeless)/)) {
+        insight = "I hear that you're feeling really down. It's perfectly okay to cry and let it out. Take a deep breath, and remember that this storm will pass. You don't have to carry this heavy feeling all alone.";
+      } else if (text.match(/(anxious|panic|worry|scared|nervous|fear|stress|overwhelmed|overthinking)/)) {
+        insight = "Anxiety can make everything feel heavy and scary. Pause for a moment and take a slow, deep breath. Focus on what you can control right now. You are safe, and you are strong enough to handle this.";
+      } else if (text.match(/(angry|mad|furious|annoyed|frustrated|rage|hate)/)) {
+        insight = "It's completely normal to feel angry when things are unfair. Before reacting, try counting to 10 or stepping away for a moment. Channel that energy into something positive like writing down your feelings or taking a fast walk.";
+      } else {
+        const defaultResponses = [
+          "I hear you, and your feelings are completely valid. Whatever you're facing, remember that tough times don't last forever. Be patient and kind to yourself right now.",
+          "Thank you for sharing that. It takes courage to open up. You have incredible inner strength, even if you don't feel it right now. Take a deep breath, you've got this.",
+          "That sounds like a heavy burden. You are not alone in feeling this way. Treat yourself with the same compassion you would show a best friend who is struggling.",
+          "I understand. Sometimes things just feel overwhelming, and that's okay. Take a small break, do something you enjoy, and remember that tomorrow is a fresh start."
+        ];
+        insight = defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
       }
 
       this.insightText.innerText = insight;
@@ -741,30 +757,6 @@ const app = {
         { front: 'Where is the train station?', back: 'Dov\'è la stazione?', pronunciation: '(dov-eh lah sta-tzee-oh-neh)' },
         { front: 'I would like more water', back: 'Vorrei più acqua', pronunciation: '(vor-rey pyoo ak-kwah)' },
         { front: 'I am in Italy', back: 'In Italia sono', pronunciation: '(een ee-tah-lyah soh-no)' }
-      ]}
-    ],
-    tamil: [
-      { level: 1, name: 'Basics', cards: [
-        { front: 'Hello', back: 'வணக்கம்', pronunciation: '(va-nak-kam)' },
-        { front: 'Mother', back: 'அம்மா', pronunciation: '(am-ma)' },
-        { front: 'Father', back: 'அப்பா', pronunciation: '(ap-pa)' },
-        { front: 'Water', back: 'தண்ணீர்', pronunciation: '(than-neer)' },
-        { front: 'Book', back: 'புத்தகம்', pronunciation: '(puth-tha-gam)' },
-        { front: 'Friend', back: 'நண்பன்', pronunciation: '(nan-ban)' },
-        { front: 'Student', back: 'மாணவன்', pronunciation: '(maa-na-van)' }
-      ]},
-      { level: 2, name: 'Phrases', cards: [
-        { front: 'How are you?', back: 'எப்படி இருக்கீங்க?', pronunciation: '(ep-pa-di iruk-keeng-ga?)' },
-        { front: 'My name is...', back: 'என் பெயர்...', pronunciation: '(en pe-yar...)' },
-        { front: 'Thank you', back: 'நன்றி', pronunciation: '(nan-ri)' },
-        { front: 'I am hungry', back: 'எனக்கு பசிக்கிறது', pronunciation: '(e-nak-ku pa-si-kki-ra-dhu)' },
-        { front: 'What is the time?', back: 'மணி என்ன?', pronunciation: '(ma-ni en-na?)' }
-      ]},
-      { level: 3, name: 'Conversations', cards: [
-        { front: 'What is your name?', back: 'உங்க பெயர் என்ன?', pronunciation: '(un-ga pe-yar en-na?)' },
-        { front: 'I am learning Tamil', back: 'நான் தமிழ் கற்கிறேன்', pronunciation: '(naan tha-mizh kar-ki-ren)' },
-        { front: 'Do you speak English?', back: 'நீங்க ஆங்கிலம் பேசுவீங்களா?', pronunciation: '(neeng-ga aan-gi-lam pe-su-veeng-ga-la?)' },
-        { front: 'Where is the hospital?', back: 'மருத்துவமனை எங்கே இருக்கிறது?', pronunciation: '(ma-ruth-thu-va-ma-nai en-ge iruk-ki-radhu?)' }
       ]}
     ],
     tamil: [
