@@ -979,6 +979,59 @@ audio::-webkit-media-controls-panel {
   color: #FFFFFF !important;
 }
 
+/* Routine Screen Styles */
+.routine-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+.routine-card {
+  padding: 30px !important;
+  border-left: 6px solid var(--primary);
+}
+.routine-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.routine-icon {
+  font-size: 2.5rem;
+}
+.routine-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.routine-list {
+  list-style: none;
+}
+.routine-list li {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+.routine-list li:last-child {
+  margin-bottom: 0;
+}
+.routine-list .check {
+  font-size: 1.2rem;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+.routine-list strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.routine-list p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 /* Responsive Overrides */
 @media (max-width: 900px) {
   .app-container {
