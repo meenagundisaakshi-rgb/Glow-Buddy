@@ -1033,6 +1033,7 @@ audio::-webkit-media-controls-panel {
 }
 
 /* Responsive Overrides */
+/* Better Responsive Design */
 @media (max-width: 900px) {
   .app-container {
     flex-direction: column;
@@ -1040,51 +1041,129 @@ audio::-webkit-media-controls-panel {
     border-radius: 0;
     min-height: 100vh;
     border: none;
+    box-shadow: none;
   }
   .sidebar {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-bottom: 1px solid var(--card-border);
-    border-right: none;
+    justify-content: space-between;
     align-items: center;
+    border-right: none;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(250, 244, 240, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
   }
   .brand {
-    margin-bottom: 15px;
-    margin-right: 0;
-    width: 100%;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+  }
+  .brand h1 {
+    font-size: 1.2rem;
+  }
+  .brand-icon {
+    width: 30px;
+    height: 30px;
   }
   .nav-links {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
     gap: 10px;
+    overflow-x: auto;
+    padding: 5px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
   .nav-links li {
     margin-bottom: 0;
+    white-space: nowrap;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.4);
+    border-radius: 20px;
+  }
+  .nav-links li.active {
+    background: var(--primary);
+    color: white;
   }
   .content-area {
-    padding: 30px 20px;
+    padding: 20px 15px 40px 15px;
   }
-  h2 { font-size: 2rem; }
+  h2 { font-size: 1.8rem; }
+  .subtitle { font-size: 0.9rem; }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    border-bottom: none;
+    border-top: 1px solid var(--card-border);
+    padding: 10px 5px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+  }
+  .brand {
+    display: none;
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 5px 10px;
+  }
+  .nav-links li {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .content-area {
+    padding-bottom: 100px;
+    padding-top: 20px;
+  }
+  
+  .card {
+    padding: 20px !important;
+    border-radius: 22px;
+  }
+  
+  /* Grid Refinements */
+  .lexly-lang-grid, .music-grid, .badges-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .routine-card {
+    padding: 20px !important;
+  }
+  
+  .bg-sticker {
+    opacity: 0.25;
+    font-size: 1.4rem;
+  }
   
   .quiz-layout {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
   .mascot-area {
-    flex: 0 0 200px;
-    width: 200px;
+    flex: 0 0 150px;
+    width: 150px;
+    margin-bottom: 20px;
   }
   .speech-bubble::before {
     left: 50%;
-    top: -20px;
+    top: -15px;
     bottom: auto;
-    border-width: 0 15px 25px 15px;
-    border-color: transparent transparent #FFF transparent;
+    border-width: 0 12px 20px 12px;
     transform: translateX(-50%);
   }
 }
