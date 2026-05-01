@@ -116,6 +116,11 @@ const app = {
     
     // Mood
     this.moodBtns = document.querySelectorAll('.mood-btn');
+
+    // Chat Elements
+    this.chatInput = document.getElementById('chat-input');
+    this.chatMessages = document.getElementById('chat-messages');
+    this.sendChatBtn = document.getElementById('send-chat-btn');
   },
   
   bindEvents() {
@@ -233,6 +238,14 @@ const app = {
       this.checkBadges();
       this.navigate('badges');
     });
+
+    // Chat Logic
+    if (this.sendChatBtn) {
+      this.sendChatBtn.addEventListener('click', () => this.sendChatMessage());
+      this.chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') this.sendChatMessage();
+      });
+    }
   },
   
   navigate(target) {
@@ -265,6 +278,85 @@ const app = {
         screen.classList.add('hidden-screen');
       }
     });
+
+    // Auto-scroll chat if navigated to chat
+    if (target === 'chat') {
+      setTimeout(() => {
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+      }, 300);
+    }
+  },
+
+  // Friend Chat Logic
+  sendChatMessage() {
+    const text = this.chatInput.value.trim();
+    if (!text) return;
+
+    this.addChatBubble('user', text);
+    this.chatInput.value = '';
+
+    // Thinking simulation
+    setTimeout(() => {
+      const response = this.getFriendResponse(text);
+      this.addChatBubble('friend', response);
+    }, 800 + Math.random() * 1500);
+  },
+
+  addChatBubble(sender, text) {
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble ${sender}`;
+    bubble.innerText = text;
+    
+    if (sender === 'user') {
+      bubble.style.cssText = "background: #DCF8C6; padding: 10px 15px; border-radius: 15px 0 15px 15px; max-width: 80%; align-self: flex-end; box-shadow: 0 1px 2px rgba(0,0,0,0.1); font-size: 0.95rem; position: relative; animation: fadeIn 0.3s ease;";
+    } else {
+      bubble.style.cssText = "background: white; padding: 10px 15px; border-radius: 0 15px 15px 15px; max-width: 80%; align-self: flex-start; box-shadow: 0 1px 2px rgba(0,0,0,0.1); font-size: 0.95rem; position: relative; animation: fadeIn 0.3s ease;";
+    }
+    
+    this.chatMessages.appendChild(bubble);
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+  },
+
+  getFriendResponse(text) {
+    const input = text.toLowerCase();
+    
+    if (input.match(/(hi|hello|hey|yo|sup|morning|evening|afternoon)/)) {
+      return ["yo! what's up?", "hey! how's it going?", "sup bestie? 👋"][Math.floor(Math.random() * 3)];
+    }
+    if (input.match(/(how are you|how r u|hru)/)) {
+      return "i'm good bruh, just chillin. how about u?";
+    }
+    if (input.match(/(sad|bad|upset|crying|angry|mad|stress|unhappy)/)) {
+      return "damn, that sounds rough. tell me more, i'm listening.";
+    }
+    if (input.match(/(exam|study|school|college|test|grades|fail)/)) {
+      return "bruh exams are the worst lol. don't sweat it too much, u're smarter than u think.";
+    }
+    if (input.match(/(happy|good|great|awesome|cool|nice)/)) {
+      return "hell yeah! love to hear that. 🔥";
+    }
+    if (input.match(/(thanks|thank you|ty)/)) {
+      return "anytime! that's what friends are for. ✌️";
+    }
+    if (input.match(/(bye|gtg|goodnight|gn)/)) {
+      return "catch u later! take care. 👋";
+    }
+    if (input.match(/(love|hate|boyfriend|girlfriend|crush)/)) {
+      return "spill the tea! what's happening? ☕";
+    }
+    
+    const defaults = [
+      "for real? 😂",
+      "that's actually interesting",
+      "bruh what",
+      "hmm... lemme think",
+      "no way!",
+      "i feel u on that.",
+      "wait, u serious?",
+      "tell me more lol",
+      "damn... 💀"
+    ];
+    return defaults[Math.floor(Math.random() * defaults.length)];
   },
 
   // Database / Storage Methods
