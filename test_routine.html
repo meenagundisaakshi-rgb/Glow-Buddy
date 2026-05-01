@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Glow Buddy | Confidence Coach</title>
+
+  <!-- SEO & PWA Meta Tags -->
+  <meta name="description"
+    content="Glow Buddy is a confidence and communication skills coach designed for Indian youth to improve self-esteem and reduce comparison.">
+  <meta name="theme-color" content="#8ec5fc">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background Animated Elements -->
+  <div class="blob shape1"></div>
+  <div class="blob shape2"></div>
+
+  <!-- Cute Floating Background Stickers -->
+  <div class="bg-sticker" style="top: 10%; left: 5%;">🌸</div>
+  <div class="bg-sticker" style="top: 20%; right: 8%; animation-delay: 1s;">✨</div>
+  <div class="bg-sticker" style="top: 50%; left: 2%; animation-delay: 2s;">🦋</div>
+  <div class="bg-sticker" style="bottom: 15%; right: 5%; animation-delay: 0.5s;">🧸</div>
+  <div class="bg-sticker" style="bottom: 5%; left: 15%; animation-delay: 1.5s;">🎀</div>
+  <div class="bg-sticker" style="top: 70%; right: 12%; animation-delay: 2.5s;">🪴</div>
+  <div class="bg-sticker" style="top: 5%; left: 40%; animation-delay: 0.8s;">☁️</div>
+  <div class="bg-sticker" style="bottom: 25%; left: 30%; animation-delay: 1.2s;">🍓</div>
+
+  <!-- Loading Screen -->
+  <div id="loader" class="screen flex-center glass">
+    <div class="spinner"></div>
+    <h2>Waking up Glow Buddy...</h2>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="app" class="app-container glass hidden">
+
+    <!-- Sidebar / Nav -->
+    <nav class="sidebar">
+      <div class="brand">
+        <img src="icon.svg" alt="Glow Buddy Logo" class="brand-icon">
+        <h1>Glow Buddy</h1>
+      </div>
+      <ul class="nav-links">
+        <li class="active" data-target="dashboard">✨ Home</li>
+        <li data-target="cbt">📖 My Journal</li>
+        <li data-target="history">🕰️ My History</li>
+        <li data-target="quiz">📝 Check-In Paper</li>
+        <li data-target="gratitude">🫙 Gratitude Jar</li>
+        <li data-target="breathe">🫁 Breathe</li>
+        <li data-target="lexly">🌎 Lexly</li>
+        <li data-target="routine">✨ Daily Routine</li> <!-- Forced Refresh -->
+        <li data-target="chill">🎧 Chill Zone</li>
+        <li data-target="speech">🎙️ Speak Up</li>
+        <li data-target="badges">🏆 Badges</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- Dashboard Screen -->
+      <section id="dashboard" class="screen active-screen" style="position: relative;">
+        <div class="page-sticker" style="top: -10px; right: 10px;">🌈</div>
+        <div class="page-sticker" style="bottom: 10px; left: -10px;">✨</div>
+        <h2>Hey there Superstar, what do you need help in.</h2>
+        <p class="subtitle">Ready to grow your confidence today?</p>
+
+        <div class="card mood-card fade-in">
+          <h3>How are you feeling right now?</h3>
+          <div class="emoji-selector">
+            <button class="mood-btn">😢</button>
+            <button class="mood-btn">😐</button>
+            <button class="mood-btn">🙂</button>
+            <button class="mood-btn">😄</button>
+            <button class="mood-btn">🤩</button>
+          </div>
+        </div>
+
+        <div class="card intro-card fade-in" style="animation-delay: 0.1s">
+          <h3>Daily Mission</h3>
+          <p>Complete your first confidence journal entry to earn the "Starter Spark" badge!</p>
+          <button class="btn primary-btn" onclick="app.navigate('cbt')">Start Journaling</button>
+        </div>
+      </section>
+
+      <!-- CBT / Journal Screen -->
+      <section id="cbt" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: -15px; left: 10px;">🖋️</div>
+        <div class="page-sticker" style="bottom: -5px; right: 10px;">🌿</div>
+        <h2>My Confidence Journal 📖</h2>
+        <p class="subtitle">Turn those negative thoughts into your superpowers.</p>
+
+        <div class="card fade-in">
+          <h3>What's bothering you today?</h3>
+          <p class="hint">e.g., "I'm stressed about my upcoming exams" or "I compared myself on Instagram."</p>
+          <textarea id="negative-thought" placeholder="Write it out, no judgement here..."></textarea>
+
+          <div id="glow-insight" class="scenario-box hidden fade-in"
+            style="margin-bottom: 20px; border-left-color: var(--primary);">
+            <h4>Glow Buddy Says 🌟</h4>
+            <p id="insight-text" style="color: var(--text-primary); font-size: 1.05rem; line-height: 1.7;"></p>
+          </div>
+
+          <div id="restart-section" class="hidden fade-in" style="margin-top: 15px;">
+            <button class="btn primary-btn" id="restart-journal-btn" style="width: 100%;">🔁 Ask Another
+              Question</button>
+          </div>
+
+          <button class="btn primary-btn" id="analyze-btn">Analyze This</button>
+        </div>
+      </section>
+
+      <!-- Routine Screen -->
+      <section id="routine" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 10px; right: 10px;">☀️</div>
+        <div class="page-sticker" style="bottom: 10px; left: 10px;">🌙</div>
+        <h2>Self-Esteem Routine ✨</h2>
+        <p class="subtitle">Small daily habits that build unstoppable confidence.</p>
+        
+        <div class="routine-container fade-in">
+          <!-- Morning Routine -->
+          <div class="card routine-card">
+            <div class="routine-header">
+              <span class="routine-icon">🌅</span>
+              <h3>Morning Routine (Start Strong)</h3>
+            </div>
+            <ul class="routine-list">
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Wake up & avoid phone for 15 mins</strong>
+                  <p>Give your brain a chance to wake up without the noise of social media.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Gratitude journaling (3 things)</strong>
+                  <p>Write down 3 things you are genuinely thankful for today.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Affirmations (say out loud)</strong>
+                  <p>“I am improving every day”<br>“I am enough”</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Light movement (5–10 mins)</strong>
+                  <p>Stretching, yoga, or a quick walk to wake up your body.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Healthy breakfast + hydration</strong>
+                  <p>Fuel your body with a good meal and plenty of water.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Midday Routine -->
+          <div class="card routine-card" style="animation-delay: 0.1s">
+            <div class="routine-header">
+              <span class="routine-icon">☀️</span>
+              <h3>Midday Routine (Stay Grounded)</h3>
+            </div>
+            <ul class="routine-list">
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Set 1–3 realistic goals</strong>
+                  <p>Focus on what you CAN achieve today, not everything at once.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Take a mindful break (5 mins)</strong>
+                  <p>Use the Breathe section for a quick mental reset.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Avoid negative self-talk → Reframe</strong>
+                  <p>Instead of: “I can’t do this”<br>Say: “I’ll try my best”</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Quick confidence boost</strong>
+                  <p>Listen to music or talk to a supportive friend.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Step outside briefly</strong>
+                  <p>Natural sunlight helps boost your mood and focus.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Evening Routine -->
+          <div class="card routine-card" style="animation-delay: 0.2s">
+            <div class="routine-header">
+              <span class="routine-icon">🌙</span>
+              <h3>Evening Routine (Reflect & Reset)</h3>
+            </div>
+            <ul class="routine-list">
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Reflect on 3 wins (even small ones!)</strong>
+                  <p>Did you help someone? Did you finish a task? Celebrate it!</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Limit screen time before bed</strong>
+                  <p>Avoid blue light at least 30 minutes before sleeping.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Do something relaxing</strong>
+                  <p>Reading, music, skincare, or drawing.</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Self-compassion check</strong>
+                  <p>Ask yourself: “What did I handle well today?”</p>
+                </div>
+              </li>
+              <li onclick="this.querySelector('.routine-check').classList.toggle('checked')">
+                <div class="routine-check"></div>
+                <div>
+                  <strong>Sleep at a consistent time</strong>
+                  <p>Rest is the foundation of mental health and confidence.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Speech Practice Screen -->
+      <section id="speech" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 10px; right: 10px;">📣</div>
+        <div class="page-sticker" style="bottom: 10px; left: 10px;">⭐</div>
+        <h2>Speak Up 🎙️</h2>
+        <p class="subtitle">Practice makes perfect. Find a quiet spot and let's talk.</p>
+
+        <div class="card fade-in">
+          <h3>Today's Scenario</h3>
+          <div class="scenario-box">
+            <h4>Introducing Yourself</h4>
+            <p>Imagine you just joined a new hobby class. Briefly introduce yourself, your interests, and what you hope
+              to learn.</p>
+          </div>
+
+          <div class="audio-controls">
+            <div id="recording-status" class="status-pulse hidden">Recording...</div>
+            <button class="btn primary-btn" id="start-record-btn">Start Practice</button>
+            <button class="btn secondary-btn hidden" id="stop-record-btn">Finish</button>
+          </div>
+
+          <div id="audio-playback" class="hidden audio-playback-area">
+            <h4>Your Practice:</h4>
+            <!-- Audio element will be injected here -->
+            <button class="btn success-btn" id="finish-module-btn">Mark as Done! +10 XP</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Badges / Gamification Screen -->
+      <section id="badges" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 10px; right: 30px;">🎉</div>
+        <div class="page-sticker" style="bottom: 10px; left: 20px;">🎖️</div>
+        <h2>Your Trophy Room 🏆</h2>
+        <p class="subtitle">Celebrate every small win!</p>
+
+        <div class="badges-grid fade-in">
+          <div class="badge-card locked" id="badge-spark">
+            <div class="badge-icon">🔥</div>
+            <h4>Starter Spark</h4>
+            <p>Complete your first journal entry.</p>
+          </div>
+          <div class="badge-card locked" id="badge-voice">
+            <div class="badge-icon">🎙️</div>
+            <h4>Brave Voice</h4>
+            <p>Complete a speech practice.</p>
+          </div>
+          <div class="badge-card locked" id="badge-streak">
+            <div class="badge-icon">📅</div>
+            <h4>3-Day Streak</h4>
+            <p>Log in for 3 days in a row.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- History Screen -->
+      <section id="history" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 15px; left: 15px;">📜</div>
+        <div class="page-sticker" style="bottom: 15px; right: 15px;">🏺</div>
+        <h2>My History 🕰️</h2>
+        <p class="subtitle">Your private vault of past journals and gratitude moments.</p>
+
+        <div id="history-feed" class="history-list fade-in">
+          <!-- History items will be grouped here dynamically -->
+        </div>
+      </section>
+
+      <!-- Gratitude Jar Screen -->
+      <section id="gratitude" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 5px; right: 5px;">🍭</div>
+        <div class="page-sticker" style="bottom: 5px; left: 5px;">💖</div>
+        <h2>Positive Chit Jar 🫙</h2>
+        <p class="subtitle">Press the jar to pull out a positive chit just for you!</p>
+
+        <div class="card flex-center-card fade-in" style="background: transparent; border: none; box-shadow: none;">
+          <div class="chit-jar-container">
+            <div class="chit slide-up" id="live-chit">
+              <p class="affirmation-text" id="daily-affirmation">"I am enough just as I am."</p>
+            </div>
+            <button class="jar-btn" id="new-affirmation-btn" title="Tap to get a new chit!">🫙</button>
+            <p class="hint" style="margin-top: 15px; font-weight: bold;">Tap the jar!</p>
+          </div>
+        </div>
+
+        <div class="card fade-in" style="animation-delay: 0.1s">
+          <h3>What made you smile today?</h3>
+          <textarea id="gratitude-input"
+            placeholder="e.g., The weather was nice today, or I had my favorite snack..."></textarea>
+          <button class="btn success-btn" id="save-gratitude-btn">Drop in the Jar</button>
+        </div>
+      </section>
+
+      <!-- Breathe Screen -->
+      <section id="breathe" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 20px; right: 40px;">☁️</div>
+        <div class="page-sticker" style="bottom: 20px; left: 40px;">🌊</div>
+        <h2>Breathe & Center 🫁</h2>
+        <p class="subtitle">Take 60 seconds to calm your mind.</p>
+
+        <div class="card flex-center-card fade-in"
+          style="min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div class="breathe-circle-container">
+            <div class="breathe-circle" id="breathe-animator"></div>
+            <p class="breathe-text" id="breathe-text">Ready</p>
+          </div>
+          <button class="btn primary-btn" id="start-breathe-btn" style="margin-top: 40px;">Start Exercise</button>
+        </div>
+      </section>
+
+      <!-- Sample Paper Screen -->
+      <section id="quiz" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 0; right: 50px;">📝</div>
+        <div class="page-sticker" style="bottom: 0; left: 50px;">🍎</div>
+        <h2>Check-In Paper 📝</h2>
+        <p class="subtitle">Glow Buddy wants to see how you're feeling today!</p>
+
+        <div class="quiz-layout">
+          <div class="mascot-area" style="position: relative;">
+            <img src="mascot.png" class="mascot-img" alt="Glow Buddy Mascot">
+            <div class="fake-lips" id="mascot-mouth"></div>
+          </div>
+          <div class="paper-area">
+            <div class="speech-bubble fade-in" id="quiz-paper">
+              <h3 id="quiz-question" style="color: var(--text-primary); margin-bottom: 20px;">Ready to start your quick
+                check-in?</h3>
+              <div class="quiz-options" id="quiz-options">
+                <button class="btn primary-btn quiz-btn" onclick="app.startQuiz()">Let's Go!</button>
+              </div>
+            </div>
+
+            <div id="sticker-reward" class="sticker-popup hidden">
+              <div class="sticker-icon" id="earned-sticker"
+                style="display: flex; justify-content: center; align-items: center; min-height: 120px;">🌟</div>
+              <h3 id="sticker-text" style="color: var(--primary);">Awesome job!</h3>
+              <p>Keep shining bright.</p>
+              <button class="btn primary-btn" onclick="app.finishQuiz()">Yay!</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lexly Language Screen -->
+      <section id="lexly" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: -10px; left: 50%; transform: translateX(-50%);">🗺️</div>
+        <div class="page-sticker" style="bottom: 10px; right: 10px;">🧩</div>
+        <h2>Lexly 🌎</h2>
+        <p class="subtitle">Expand your world. Learn a new language bite by bite.</p>
+        <!-- 15 languages with 3 levels each (including Portuguese, German, Marathi) -->
+
+        <div id="lexly-categories" class="lexly-lang-grid fade-in">
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('spanish')">
+            <div class="lexly-lang-flag">🇪🇸</div>
+            <h4>Spanish</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('french')">
+            <div class="lexly-lang-flag">🇫🇷</div>
+            <h4>French</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('japanese')">
+            <div class="lexly-lang-flag">🇯🇵</div>
+            <h4>Japanese</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('chinese')">
+            <div class="lexly-lang-flag">🇨🇳</div>
+            <h4>Chinese</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('hindi')">
+            <div class="lexly-lang-flag">🇮🇳</div>
+            <h4>Hindi</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('korean')">
+            <div class="lexly-lang-flag">🇰🇷</div>
+            <h4>Korean</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('kannada')">
+            <div class="lexly-lang-flag">🏴</div>
+            <h4>Kannada</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('sanskrit')">
+            <div class="lexly-lang-flag">🕉️</div>
+            <h4>Sanskrit</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('tamil')">
+            <div class="lexly-lang-flag">🇮🇳</div>
+            <h4>Tamil</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('telugu')">
+            <div class="lexly-lang-flag">🇮🇳</div>
+            <h4>Telugu</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('malayalam')">
+            <div class="lexly-lang-flag">🇮🇳</div>
+            <h4>Malayalam</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('italian')">
+            <div class="lexly-lang-flag">🇮🇹</div>
+            <h4>Italian</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('portuguese')">
+            <div class="lexly-lang-flag">🇵🇹</div>
+            <h4>Portuguese</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('german')">
+            <div class="lexly-lang-flag">🇩🇪</div>
+            <h4>German</h4>
+            <p>3 Levels</p>
+          </div>
+          <div class="lexly-lang-card" onclick="app.showLexlyLevels('marathi')">
+            <div class="lexly-lang-flag">🇮🇳</div>
+            <h4>Marathi</h4>
+            <p>3 Levels</p>
+          </div>
+        </div>
+
+        <div id="lexly-levels" class="hidden fade-in" style="margin-top: 20px;">
+          <div
+            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <button class="btn secondary-btn" onclick="app.exitLexly()" style="margin-top:0; padding: 10px 15px;">←
+                Back</button>
+              <h3 id="lexly-level-title" style="margin: 0; color: var(--primary);">Levels</h3>
+            </div>
+            <button class="btn success-btn" onclick="app.startLexlyTest(true)"
+              style="margin-top:0; padding: 10px 20px; font-weight: bold;">📝 Test Me!</button>
+          </div>
+          <div id="levels-grid" class="lexly-lang-grid">
+            <!-- Dynamic levels go here -->
+          </div>
+        </div>
+
+        <div id="lexly-flashcards" class="hidden fade-in" style="margin-top: 20px;">
+          <div class="flex-center-card" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="progress-bar-container"
+              style="width: 100%; max-width: 400px; height: 10px; background: rgba(0,0,0,0.1); border-radius: 10px; margin-bottom: 20px;">
+              <div id="lexly-progress"
+                style="width: 0%; height: 100%; background: var(--success); border-radius: 10px; transition: width 0.4s;">
+              </div>
+            </div>
+
+            <!-- Speak English word button (always visible) -->
+            <button class="lexly-speak-btn" id="lexly-speak-front" onclick="app.lexlySpeak('front')"
+              title="Hear English pronunciation">
+              🔊 <span>Hear English</span>
+            </button>
+
+            <div class="flashcard-container" onclick="app.flipLexlyCard()">
+              <div class="flashcard" id="lexly-card">
+                <div class="flashcard-front flex-center-card">
+                  <h3 id="lexly-front-text" style="font-size: 2rem;">Hello</h3>
+                  <p class="hint" style="margin-top:10px;">Tap card to flip 👆</p>
+                </div>
+                <div class="flashcard-back flex-center-card">
+                  <h3 id="lexly-back-text" style="font-size: 2.2rem;">Hola</h3>
+                  <p id="lexly-pronunciation" style="margin-top: 10px; font-size: 1rem; opacity: 0.85;">(oh-lah)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pronouncer strip — shown after flip -->
+            <div id="lexly-pronouncer" class="lexly-pronouncer hidden">
+              <div class="pronouncer-label">📢 Pronunciation Guide</div>
+              <div class="pronouncer-text" id="lexly-pronoun-display"></div>
+              <button class="lexly-speak-btn speak-target" onclick="app.lexlySpeak('back')">
+                🔊 <span>Hear in Target Language</span>
+              </button>
+            </div>
+
+            <div id="lexly-controls" class="hidden fade-in"
+              style="margin-top: 20px; display: flex; gap: 20px; width: 100%; max-width: 400px; justify-content: center;">
+              <button class="btn secondary-btn" onclick="app.nextLexlyCard()"
+                style="flex: 1; padding: 15px; border-color: var(--danger); color: var(--danger);">Hard 🤔</button>
+              <button class="btn success-btn" onclick="app.nextLexlyCard()" style="flex: 1; padding: 15px;">Easy
+                ✅</button>
+            </div>
+
+            <button class="btn secondary-btn" onclick="app.exitLexly()"
+              style="margin-top: 30px; font-size: 0.9rem;">Back to Decks</button>
+          </div>
+        </div>
+
+        <div id="lexly-complete" class="hidden fade-in card flex-center-card"
+          style="text-align: center; padding: 40px; justify-content: center; align-items: center; display: flex; flex-direction: column;">
+          <div style="font-size: 5rem; margin-bottom: 15px;">🎉</div>
+          <h3 style="font-size: 2rem;">Deck Completed!</h3>
+          <p>You are one step closer to fluency. Great job!</p>
+          <div style="display: flex; gap: 15px; margin-top: 20px;">
+            <button class="btn success-btn" onclick="app.startLexlyTest()">Take a Quiz 📝</button>
+            <button class="btn primary-btn" onclick="app.exitLexly()">Choose Another Deck</button>
+          </div>
+        </div>
+
+        <div id="lexly-test" class="hidden fade-in">
+          <div class="card flex-center-card"
+            style="min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px;">
+            <div class="quiz-badge" id="lexly-test-badge">📝 Language Test</div>
+            <h3 id="lexly-test-question" style="font-size: 1.8rem; margin: 30px 0; text-align: center;">Question goes
+              here?</h3>
+
+            <div id="lexly-test-options"
+              style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px;">
+              <!-- Options will be injected here -->
+            </div>
+
+            <div id="lexly-test-feedback" class="hidden"
+              style="margin-top: 25px; font-weight: 600; padding: 10px 20px; border-radius: 12px;">
+              Correct! ✅
+            </div>
+
+            <button class="btn secondary-btn" onclick="app.exitLexly()"
+              style="margin-top: 40px; font-size: 0.85rem;">Quit Test</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chill Zone / Music Screen -->
+      <section id="chill" class="screen hidden-screen" style="position: relative;">
+        <div class="page-sticker" style="top: 10px; right: 10px;">🍦</div>
+        <div class="page-sticker" style="bottom: 10px; left: 10px;">🎸</div>
+        <h2>Chill Zone 🎧</h2>
+        <p class="subtitle">Put on your headphones, vibe out, and let the music take your stress away.</p>
+
+        <div class="music-grid fade-in">
+
+          <!-- Feel-Good Hits -->
+          <h3 style="margin-top: 10px; font-size: 1.3rem; color: var(--primary);">🎤 Feel-Good Hits</h3>
+
+          <div class="card music-card">
+            <h3>🌼 Dandelions — Ruth B.</h3>
+            <p class="hint">"I'm in a field of dandelions, wishing on every one that you'd be mine." Pure, sweet vibes.
+            </p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=W8a4sUabCUo', '_blank')">
+              <img src="https://img.youtube.com/vi/W8a4sUabCUo/hqdefault.jpg" alt="Dandelions Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=W8a4sUabCUo" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <div class="card music-card">
+            <h3>💭 That's So True — Gracie Abrams</h3>
+            <p class="hint">"And I think I'm gonna be okay... and that's so true." A gentle reminder of resilience.</p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=W_YOJWZIjxo', '_blank')">
+              <img src="https://img.youtube.com/vi/W_YOJWZIjxo/hqdefault.jpg" alt="That's So True Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=W_YOJWZIjxo" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <div class="card music-card">
+            <h3>✨ Gabriela — KATSEYE</h3>
+            <p class="hint">A beautiful, soulful track to help you find your rhythm.</p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=t0aY0Q7X2hA', '_blank')">
+              <img src="https://img.youtube.com/vi/t0aY0Q7X2hA/hqdefault.jpg" alt="Gabriela Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=t0aY0Q7X2hA" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <div class="card music-card">
+            <h3>☕ Espresso — Sabrina Carpenter</h3>
+            <p class="hint">"I'm working late, cause I'm a singer." Upbeat, confident, and catchy!</p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=QkH9L-2iJz0', '_blank')">
+              <img src="https://img.youtube.com/vi/QkH9L-2iJz0/hqdefault.jpg" alt="Espresso Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=QkH9L-2iJz0" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <div class="card music-card">
+            <h3>🐦 Birds of a Feather — Billie Eilish</h3>
+            <p class="hint">"I'll love you 'til the day that I die." A beautiful tribute to deep connection.</p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=FvKxW4y7D6Q', '_blank')">
+              <img src="https://img.youtube.com/vi/FvKxW4y7D6Q/hqdefault.jpg" alt="Birds of a Feather Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=FvKxW4y7D6Q" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <div class="card music-card">
+            <h3>🎵 Die With A Smile — Lady Gaga & Bruno Mars</h3>
+            <p class="hint">A powerful, soaring anthem about living in the moment.</p>
+            <div class="video-wrapper" style="cursor: pointer; position: relative;"
+              onclick="window.open('https://www.youtube.com/watch?v=j423-H_Y0_4', '_blank')">
+              <img src="https://img.youtube.com/vi/j423-H_Y0_4/hqdefault.jpg" alt="Die With A Smile Thumbnail"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; opacity: 0.8; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                ▶️</div>
+            </div>
+            <a href="https://www.youtube.com/watch?v=j423-H_Y0_4" target="_blank" class="btn secondary-btn"
+              style="display:block; text-align:center; margin-top:10px; font-size:0.9rem; padding: 8px;">Listen on
+              YouTube ↗</a>
+          </div>
+
+          <!-- Calm & Relax -->
+          <h3 style="margin-top: 30px; font-size: 1.3rem; color: var(--secondary);">🌿 Calm & Relax</h3>
+
+          <div class="card music-card">
+            <h3>☕ Lo-Fi Beats to Study & Relax</h3>
+            <p class="hint">Cozy background beats perfect for studying or just chilling.</p>
+            <div class="video-wrapper">
+              <iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/jfKfPfyJRdk"
+                title="Lo-fi beats" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="card music-card">
+            <h3>🌊 Ocean & Rain Sounds</h3>
+            <p class="hint">Nature sounds to quiet your mind and ease anxiety.</p>
+            <div class="video-wrapper">
+              <iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/f77SKdyn-1Y"
+                title="Rain sounds" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Badges Section -->
+      <section id="badges" class="screen hidden-screen">
+        <h2>My Achievements 🏆</h2>
+        <p class="subtitle">Your progress, celebrated. Keep glowing!</p>
+
+        <div class="badges-grid fade-in" id="badges-container">
+          <!-- Badges will be dynamically rendered here -->
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
