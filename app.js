@@ -12,6 +12,7 @@ const affirmations = [
 const app = {
   activeScreen: 'dashboard',
   mediaRecorder: null,
+  lastTipIndex: -1,
   audioChunks: [],
   journalEntries: [],
   
@@ -343,6 +344,20 @@ const app = {
     }
     if (input.match(/(love|hate|boyfriend|girlfriend|crush)/)) {
       return "spill the tea! what's happening? ☕";
+    }
+
+    if (input.match(/(tip|tips|help|feel good|advice|bored|sad|depressed|motivation|cheer me up)/)) {
+      const tipSets = [
+        "bet. here's some quick tips to feel better:\n\n1. get some sunlight, it's a mood booster ☀️\n2. drink some water, u probably forgot lol 💧\n3. blast your fav song and just vibe 🎵",
+        "i got u. try these:\n\n1. write 3 things u actually like about yourself ✨\n2. stretch for 5 mins, get that blood moving 🧘\n3. clean one small spot in your room. trust me, it helps 🧹",
+        "hmm... try this:\n\n1. take a deep breath (use the Breathe section!) 🫁\n2. text a friend just to say hi 📱\n3. look in the mirror and give yourself a wink 😉",
+        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊"
+      ];
+      // Try to avoid the same set twice if possible
+      let index = Math.floor(Math.random() * tipSets.length);
+      if (index === this.lastTipIndex) index = (index + 1) % tipSets.length;
+      this.lastTipIndex = index;
+      return tipSets[index];
     }
     
     const defaults = [
