@@ -296,11 +296,30 @@ const app = {
     this.addChatBubble('user', text);
     this.chatInput.value = '';
 
+    // Show typing indicator
+    this.showTypingIndicator();
+
     // Thinking simulation
     setTimeout(() => {
+      this.hideTypingIndicator();
       const response = this.getFriendResponse(text);
       this.addChatBubble('friend', response);
-    }, 800 + Math.random() * 1500);
+    }, 1200 + Math.random() * 2000);
+  },
+
+  showTypingIndicator() {
+    if (document.getElementById('typing-indicator')) return;
+    const indicator = document.createElement('div');
+    indicator.id = 'typing-indicator';
+    indicator.className = 'typing-indicator';
+    indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    this.chatMessages.appendChild(indicator);
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+  },
+
+  hideTypingIndicator() {
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) indicator.remove();
   },
 
   addChatBubble(sender, text) {
@@ -321,74 +340,68 @@ const app = {
   getFriendResponse(text) {
     const input = text.toLowerCase();
     
-    // PRIORITY 1: Tips & Motivation
-    if (input.match(/(tip|tips|help|feel good|advice|motivation|cheer me up|what should i do)/)) {
-      const tipSets = [
-        "bet. here's some quick tips to feel better:\n\n1. get some sunlight, it's a mood booster ☀️\n2. drink some water, u probably forgot lol 💧\n3. blast your fav song and just vibe 🎵",
-        "i got u. try these:\n\n1. write 3 things u actually like about yourself ✨\n2. stretch for 5 mins, get that blood moving 🧘\n3. clean one small spot in your room. trust me, it helps 🧹",
-        "hmm... try this:\n\n1. take a deep breath (use the Breathe section!) 🫁\n2. text a friend just to say hi 📱\n3. look in the mirror and give yourself a wink 😉",
-        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊",
-        "here's the plan:\n\n1. do a quick 2-min brain dump (write everything bothering u) 📝\n2. make a cup of tea or cocoa ☕\n3. look at some memes or cat videos lol 🐱",
-        "try these quick wins:\n\n1. fix your bed, it makes u feel like u achieved something 🛏️\n2. wash your face with cold water ❄️\n3. think of one thing u're looking forward to this week 🗓️",
-        "bet, check this out:\n\n1. stand up and shake your arms/legs for 30 secs (trust me) 💃\n2. tell yourself 'i am doing my best' out loud 🗣️\n3. draw a small doodle, doesn't have to be good 🎨"
+    // Detailed Context Matching (ChatGPT-style intelligence simulation)
+    
+    // Help & Motivation with context
+    if (input.match(/(tip|tips|help|advice|motivation|what should i do)/)) {
+      if (input.includes('exam') || input.includes('study')) {
+        return "I feel u. Exams are stressful. My advice? Break it down. Study for 25 mins, then take a 5 min break (the Pomodoro technique, bruh). Also, make sure u're getting enough sleep, your brain needs it to actually remember stuff! 🧠📚";
+      }
+      if (input.includes('friend') || input.includes('people') || input.includes('social')) {
+        return "Social stuff can be tricky. Honestly, just be yourself. People worth your time will like u for who u are. If u're feeling nervous, try just asking the other person a question about themselves—people love talking about themselves lol. 🗣️✨";
+      }
+      if (input.includes('sad') || input.includes('down') || input.includes('bad')) {
+        return "If u're feeling down, first off, it's okay to not be okay. Try to do one tiny thing that makes u feel 'human'—like taking a shower, changing your shirt, or just stepping outside for 2 mins. Small wins build up! 🪴🌤️";
+      }
+      
+      const generalTips = [
+        "Bet. Here's the move:\n\n1. Get some sunlight, it's a mood booster ☀️\n2. Drink some water, u probably forgot lol 💧\n3. Blast your fav song and just vibe 🎵",
+        "I got u. Try these:\n\n1. Write 3 things u actually like about yourself ✨\n2. Stretch for 5 mins, get that blood moving 🧘\n3. Clean one small spot in your room. Trust me, it helps 🧹",
+        "Hmm... try this:\n\n1. Take a deep breath (use the Breathe section!) 🫁\n2. Text a friend just to say hi 📱\n3. Look in the mirror and give yourself a wink 😉"
       ];
-      let index = Math.floor(Math.random() * tipSets.length);
-      if (index === this.lastTipIndex) index = (index + 1) % tipSets.length;
-      this.lastTipIndex = index;
-      return tipSets[index];
+      return generalTips[Math.floor(Math.random() * generalTips.length)];
     }
 
-    // PRIORITY 2: General Greetings & Mood
+    // Stress & Anxiety
+    if (input.match(/(stress|anxiety|anxious|nervous|worried|panic)/)) {
+      return "That sounds heavy. 🫂 When u're feeling that way, your body is in 'fight or flight' mode. Try the 5-4-3-2-1 technique: find 5 things u can see, 4 u can touch, 3 u can hear, 2 u can smell, and 1 u can taste. It grounds u back to reality. 🌊";
+    }
+
+    // Loneliness
+    if (input.includes('lonely') || input.includes('alone') || input.includes('nobody')) {
+      return "I'm right here with u! 🫂 Loneliness is just a feeling, not a fact. Sometimes reaching out to even one person—even just a 'hey'—can break that cycle. Also, doing a hobby u love can make 'alone time' feel like 'soul time.' ✨";
+    }
+
+    // Comparison (Related to the app's core mission)
+    if (input.includes('compare') || input.includes('better than me') || input.includes('instagram') || input.includes('social media')) {
+      return "Comparison is the thief of joy, for real. 💀 Remember, social media is a highlight reel, not the full movie. U're comparing your 'behind the scenes' to their 'best takes.' Focus on your own growth, even if it's slow. 🐢✨";
+    }
+
+    // Specific Greetings
     if (input.match(/(hi|hello|hey|yo|sup|morning|evening|afternoon)/)) {
-      return ["yo! what's up?", "hey! how's it going?", "sup bestie? 👋", "hiii! what's the move today?", "yo yo! how u been?"][Math.floor(Math.random() * 5)];
+      const greetings = ["Yo! What's on your mind? I'm listening. 🗣️", "Hey! How's your day been so far?", "Sup bestie? 👋 Anything u wanna vent about?"];
+      return greetings[Math.floor(Math.random() * greetings.length)];
     }
+
+    // Relationships
+    if (input.match(/(love|boyfriend|girlfriend|crush|relationship|breakup)/)) {
+      return "Relationship drama is exhausting lol. ☕ Spill the tea—what's actually happening? I'll give u my honest take.";
+    }
+
+    // How are you
     if (input.match(/(how are you|how r u|hru)/)) {
-      return ["i'm good bruh, just chillin. how about u?", "doin great! just waitin for u to text lol.", "living my best life. u?", "pretty good, just vibing. how u feeling?"][Math.floor(Math.random() * 4)];
+      return "I'm doing great since we're chatting! Just here to support u. How are YOU actually doing? Be honest. 🤨";
     }
-    if (input.match(/(sad|bad|upset|crying|angry|mad|stress|unhappy|depressed|bored)/)) {
-      return [
-        "damn, that sounds rough. tell me more, i'm listening.", 
-        "bruh that sucks. u wanna talk about it?", 
-        "damn... 💀 u okay?",
-        "i'm here for u. what's on your mind?",
-        "that's a whole mood. i'm sorry u're going thru it."
-      ][Math.floor(Math.random() * 5)];
-    }
-    if (input.match(/(exam|study|school|college|test|grades|fail|homework)/)) {
-      return [
-        "bruh exams are the worst lol. don't sweat it too much, u're smarter than u think.",
-        "school is literally a scam sometimes. but u got this, trust me.",
-        "exams? rip. 💀 but seriously, just do your best and don't overthink it.",
-        "don't let grades define u. u're worth way more than a piece of paper."
-      ][Math.floor(Math.random() * 4)];
-    }
-    if (input.match(/(happy|good|great|awesome|cool|nice|amazing)/)) {
-      return ["hell yeah! love to hear that. 🔥", "slay! u deserve it.", "that's what i'm talking about!", "ayyy! let's goooo!"][Math.floor(Math.random() * 4)];
-    }
-    if (input.match(/(thanks|thank you|ty)/)) {
-      return ["anytime! that's what friends are for. ✌️", "no problem, i got your back.", "yw bestie!", "don't mention it! 💖"][Math.floor(Math.random() * 4)];
-    }
-    if (input.match(/(bye|gtg|goodnight|gn)/)) {
-      return ["catch u later! take care. 👋", "bye bye! talk soon.", "gn! sleep well. ✨", "peace out! ✌️"][Math.floor(Math.random() * 4)];
-    }
-    if (input.match(/(love|hate|boyfriend|girlfriend|crush|relationship)/)) {
-      return ["spill the tea! what's happening? ☕", "ooh gossip? i'm listening lol.", "damn, relationship stuff is hard. what's up?", "no way, tell me everything! 🍿"][Math.floor(Math.random() * 4)];
-    }
-    
-    const defaults = [
-      "for real? 😂",
-      "that's actually interesting",
-      "bruh what",
-      "hmm... lemme think",
-      "no way!",
-      "i feel u on that.",
-      "wait, u serious?",
-      "tell me more lol",
-      "damn... 💀",
-      "mood.",
-      "facts."
+
+    // Default intelligent-ish fallback
+    const fallbacks = [
+      "I hear u. That's a lot to handle, but u're tougher than u think. 👊",
+      "For real? 😂 Tell me more about that, I'm curious.",
+      "That's a valid way to feel. Honestly, most people would feel the same way in your spot. 🫂",
+      "Hmm, I get what u mean. What do u think your next step should be?",
+      "Mood. 💀 Sometimes life just be like that, but we're gonna get thru it."
     ];
-    return defaults[Math.floor(Math.random() * defaults.length)];
+    return fallbacks[Math.floor(Math.random() * fallbacks.length)];
   },
 
   // Database / Storage Methods
