@@ -327,7 +327,10 @@ const app = {
         "bet. here's some quick tips to feel better:\n\n1. get some sunlight, it's a mood booster ☀️\n2. drink some water, u probably forgot lol 💧\n3. blast your fav song and just vibe 🎵",
         "i got u. try these:\n\n1. write 3 things u actually like about yourself ✨\n2. stretch for 5 mins, get that blood moving 🧘\n3. clean one small spot in your room. trust me, it helps 🧹",
         "hmm... try this:\n\n1. take a deep breath (use the Breathe section!) 🫁\n2. text a friend just to say hi 📱\n3. look in the mirror and give yourself a wink 😉",
-        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊"
+        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊",
+        "here's the plan:\n\n1. do a quick 2-min brain dump (write everything bothering u) 📝\n2. make a cup of tea or cocoa ☕\n3. look at some memes or cat videos lol 🐱",
+        "try these quick wins:\n\n1. fix your bed, it makes u feel like u achieved something 🛏️\n2. wash your face with cold water ❄️\n3. think of one thing u're looking forward to this week 🗓️",
+        "bet, check this out:\n\n1. stand up and shake your arms/legs for 30 secs (trust me) 💃\n2. tell yourself 'i am doing my best' out loud 🗣️\n3. draw a small doodle, doesn't have to be good 🎨"
       ];
       let index = Math.floor(Math.random() * tipSets.length);
       if (index === this.lastTipIndex) index = (index + 1) % tipSets.length;
@@ -337,28 +340,39 @@ const app = {
 
     // PRIORITY 2: General Greetings & Mood
     if (input.match(/(hi|hello|hey|yo|sup|morning|evening|afternoon)/)) {
-      return ["yo! what's up?", "hey! how's it going?", "sup bestie? 👋"][Math.floor(Math.random() * 3)];
+      return ["yo! what's up?", "hey! how's it going?", "sup bestie? 👋", "hiii! what's the move today?", "yo yo! how u been?"][Math.floor(Math.random() * 5)];
     }
     if (input.match(/(how are you|how r u|hru)/)) {
-      return "i'm good bruh, just chillin. how about u?";
+      return ["i'm good bruh, just chillin. how about u?", "doin great! just waitin for u to text lol.", "living my best life. u?", "pretty good, just vibing. how u feeling?"][Math.floor(Math.random() * 4)];
     }
     if (input.match(/(sad|bad|upset|crying|angry|mad|stress|unhappy|depressed|bored)/)) {
-      return ["damn, that sounds rough. tell me more, i'm listening.", "bruh that sucks. u wanna talk about it?", "damn... 💀 u okay?"][Math.floor(Math.random() * 3)];
+      return [
+        "damn, that sounds rough. tell me more, i'm listening.", 
+        "bruh that sucks. u wanna talk about it?", 
+        "damn... 💀 u okay?",
+        "i'm here for u. what's on your mind?",
+        "that's a whole mood. i'm sorry u're going thru it."
+      ][Math.floor(Math.random() * 5)];
     }
-    if (input.match(/(exam|study|school|college|test|grades|fail)/)) {
-      return "bruh exams are the worst lol. don't sweat it too much, u're smarter than u think.";
+    if (input.match(/(exam|study|school|college|test|grades|fail|homework)/)) {
+      return [
+        "bruh exams are the worst lol. don't sweat it too much, u're smarter than u think.",
+        "school is literally a scam sometimes. but u got this, trust me.",
+        "exams? rip. 💀 but seriously, just do your best and don't overthink it.",
+        "don't let grades define u. u're worth way more than a piece of paper."
+      ][Math.floor(Math.random() * 4)];
     }
-    if (input.match(/(happy|good|great|awesome|cool|nice)/)) {
-      return "hell yeah! love to hear that. 🔥";
+    if (input.match(/(happy|good|great|awesome|cool|nice|amazing)/)) {
+      return ["hell yeah! love to hear that. 🔥", "slay! u deserve it.", "that's what i'm talking about!", "ayyy! let's goooo!"][Math.floor(Math.random() * 4)];
     }
     if (input.match(/(thanks|thank you|ty)/)) {
-      return "anytime! that's what friends are for. ✌️";
+      return ["anytime! that's what friends are for. ✌️", "no problem, i got your back.", "yw bestie!", "don't mention it! 💖"][Math.floor(Math.random() * 4)];
     }
     if (input.match(/(bye|gtg|goodnight|gn)/)) {
-      return "catch u later! take care. 👋";
+      return ["catch u later! take care. 👋", "bye bye! talk soon.", "gn! sleep well. ✨", "peace out! ✌️"][Math.floor(Math.random() * 4)];
     }
-    if (input.match(/(love|hate|boyfriend|girlfriend|crush)/)) {
-      return "spill the tea! what's happening? ☕";
+    if (input.match(/(love|hate|boyfriend|girlfriend|crush|relationship)/)) {
+      return ["spill the tea! what's happening? ☕", "ooh gossip? i'm listening lol.", "damn, relationship stuff is hard. what's up?", "no way, tell me everything! 🍿"][Math.floor(Math.random() * 4)];
     }
     
     const defaults = [
@@ -370,7 +384,9 @@ const app = {
       "i feel u on that.",
       "wait, u serious?",
       "tell me more lol",
-      "damn... 💀"
+      "damn... 💀",
+      "mood.",
+      "facts."
     ];
     return defaults[Math.floor(Math.random() * defaults.length)];
   },
