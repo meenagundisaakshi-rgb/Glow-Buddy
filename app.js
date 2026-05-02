@@ -321,14 +321,29 @@ const app = {
   getFriendResponse(text) {
     const input = text.toLowerCase();
     
+    // PRIORITY 1: Tips & Motivation
+    if (input.match(/(tip|tips|help|feel good|advice|motivation|cheer me up|what should i do)/)) {
+      const tipSets = [
+        "bet. here's some quick tips to feel better:\n\n1. get some sunlight, it's a mood booster ☀️\n2. drink some water, u probably forgot lol 💧\n3. blast your fav song and just vibe 🎵",
+        "i got u. try these:\n\n1. write 3 things u actually like about yourself ✨\n2. stretch for 5 mins, get that blood moving 🧘\n3. clean one small spot in your room. trust me, it helps 🧹",
+        "hmm... try this:\n\n1. take a deep breath (use the Breathe section!) 🫁\n2. text a friend just to say hi 📱\n3. look in the mirror and give yourself a wink 😉",
+        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊"
+      ];
+      let index = Math.floor(Math.random() * tipSets.length);
+      if (index === this.lastTipIndex) index = (index + 1) % tipSets.length;
+      this.lastTipIndex = index;
+      return tipSets[index];
+    }
+
+    // PRIORITY 2: General Greetings & Mood
     if (input.match(/(hi|hello|hey|yo|sup|morning|evening|afternoon)/)) {
       return ["yo! what's up?", "hey! how's it going?", "sup bestie? 👋"][Math.floor(Math.random() * 3)];
     }
     if (input.match(/(how are you|how r u|hru)/)) {
       return "i'm good bruh, just chillin. how about u?";
     }
-    if (input.match(/(sad|bad|upset|crying|angry|mad|stress|unhappy)/)) {
-      return "damn, that sounds rough. tell me more, i'm listening.";
+    if (input.match(/(sad|bad|upset|crying|angry|mad|stress|unhappy|depressed|bored)/)) {
+      return ["damn, that sounds rough. tell me more, i'm listening.", "bruh that sucks. u wanna talk about it?", "damn... 💀 u okay?"][Math.floor(Math.random() * 3)];
     }
     if (input.match(/(exam|study|school|college|test|grades|fail)/)) {
       return "bruh exams are the worst lol. don't sweat it too much, u're smarter than u think.";
@@ -344,20 +359,6 @@ const app = {
     }
     if (input.match(/(love|hate|boyfriend|girlfriend|crush)/)) {
       return "spill the tea! what's happening? ☕";
-    }
-
-    if (input.match(/(tip|tips|help|feel good|advice|bored|sad|depressed|motivation|cheer me up)/)) {
-      const tipSets = [
-        "bet. here's some quick tips to feel better:\n\n1. get some sunlight, it's a mood booster ☀️\n2. drink some water, u probably forgot lol 💧\n3. blast your fav song and just vibe 🎵",
-        "i got u. try these:\n\n1. write 3 things u actually like about yourself ✨\n2. stretch for 5 mins, get that blood moving 🧘\n3. clean one small spot in your room. trust me, it helps 🧹",
-        "hmm... try this:\n\n1. take a deep breath (use the Breathe section!) 🫁\n2. text a friend just to say hi 📱\n3. look in the mirror and give yourself a wink 😉",
-        "listen, u gotta:\n\n1. put your phone away for 10 mins 📵\n2. eat something u actually like 🍕\n3. remember u're doing better than u think. for real. 👊"
-      ];
-      // Try to avoid the same set twice if possible
-      let index = Math.floor(Math.random() * tipSets.length);
-      if (index === this.lastTipIndex) index = (index + 1) % tipSets.length;
-      this.lastTipIndex = index;
-      return tipSets[index];
     }
     
     const defaults = [
